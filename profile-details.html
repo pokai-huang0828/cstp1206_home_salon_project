@@ -30,29 +30,31 @@
     <title>The Home Salon App</title>
   </head>
   <body class="profile-detail-page">
+
     <nav class="navbar-fixed transparent z-depth-0">
       <div class="nav-wrapper container">
-        <a href="index.html" class="brand-logo">Home Salon</a>
+        <a href="index.html" class="brand-logo"><img src="img/logo4.png" height = 56 width = 66></a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-          <li><a href="index.html/#aboutus">About Us</a></li>
-          <li><a href="index.html/#stylists">Our Stylists</a></li>
-          <li><a href="index.html/#policy">Site Policy</a></li>
-          <li><a href="index.html/#signup">SignUp</a></li>
-          <li><a href="#" class="btn black">Login</a></li>
+          <!-- <li><a href="#aboutus">About Us</a></li>
+          <li><a href="#stylists">Our Stylists</a></li>
+          <li><a href="#policy">Site Policy</a></li> -->
+          <li><a href="#signup" class="btn disabled">SignUp</a></li>
+          <li><a href="#" class="btn black disabled">Login</a></li>
         </ul>
       </div>
-    </nav>
-
-    <ul class="sidenav" id="mobile-demo">
-      <br />
-      <br />
-      <li><a href="index.html/#aboutus">About Us</a></li>
-      <li><a href="index.html/#stylists">Our Stylists</a></li>
-      <li><a href="index.html/#policy">Site Policy</a></li>
-      <li><a href="index.html/#signup">SignUp</a></li>
+  </nav>
+  
+  <ul class="sidenav" id="mobile-demo">
+      <br>
+      <br>
+      <br>
+      <!-- <li><a href="#aboutus">About Us</a></li>
+      <li><a href="#stylists">Our Stylists</a></li>
+      <li><a href="#policy">Site Policy</a></li> -->
+      <li><a href="#signup">SignUp</a></li>
       <li><a href="#" class="btn black">Login</a></li>
-    </ul>
+  </ul>
 
     <div class="error white-text bold black">
       <span>Opps! This profile does not exist. Please try again.</span></br>
@@ -78,6 +80,7 @@
           </div>
 
           <div class="card-content lighten-4">
+
             <div id="profile">
               <div class="row">
                 <div class="profile-panel col s12 m4 center z-depth-1">
@@ -92,6 +95,7 @@
                   <p>Member Since: <span id="signUpDate"></span></p>
                   <p>Rating: <span id="rating"></span></p>
                 </div>
+
                 <div class="col s12 m8">
                   <table class="profile-detail-table">
                     <tbody>
@@ -124,10 +128,12 @@
                     </div>
                   </div>
                 </div>
+
               </div>
             </div>
 
             <div id="portfolio">no portfolio yet</div>
+            
             <div id="contact">
               <table class="profile-detail-table">
                 <tbody>
@@ -139,11 +145,10 @@
                     <td class="bold">Tel.</td>
                     <td><span id="phoneNumber"></span></td>
                   </tr>
-
                 </tbody>
               </table>
-
             </div>
+
           </div>
         </div>
       </div>
@@ -158,43 +163,48 @@
 
     <div>
       <p class="center">
-        <a href="#" class="white-text">Back to top</a>
+        <a href="#" class=" white-text">Back to top</a>
       </p>
     </div>
 
     <footer class="page-footer">
-      <div class="container black-text">
-        <div class="row">
-          <div class="col l6 s12">
-            <h5 class="white-text black">Contact Us</h5>
-            <p class="white-text text-lighten-4">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, quos
-              soluta quae assumenda dicta consequatur id necessitatibus cumque
-              excepturi libero repellat similique culpa veniam sit voluptatem
-              modi itaque nostrum. Quos?
-            </p>
-          </div>
-          <div class="col l4 offset-l2 s12">
-            <h5 class="white-text black">Follow Us On</h5>
-            <ul>
-              <li>
-                <a class="white-text text-lighten-3" href="#!">Facebook</a>
-              </li>
-              <li>
-                <a class="white-text text-lighten-3" href="#!">Instagram</a>
-              </li>
-              <li>
-                <a class="white-text text-lighten-3" href="#!">Tweeter</a>
-              </li>
-            </ul>
+        <div class="container black-text">
+          <div class="row">
+            <div class="col l6 s12">
+              <h5 class="white-text ">Contact Us</h5>
+              <p class="white-text text-lighten-4">We enjoy getting feedback from our clients and potential clients. If you have any query or want to know more,</p>
+              <p class="white-text text-lighten-4">Send us an email at: <a href="mailto:info@homesalon.com">info@homesalon.com</a></p>
+              <p class="white-text text-lighten-4">Or call: +1 987-654-3210</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+              <h5 class="white-text">Follow Us On</h5>
+              <tr>
+                <td width="48">
+                  <a href="https://www.facebook.com/" target="new" onmouseover = "M_swapImage('Facebook','','http://03e.bb3.myftpupload.com/wp-content/uploads/2014/01/facebook.png',1)" onmouseout="MM_swapImgRestore()">
+                    <img src="img/facebook.png" alt="Follow us on Facebook" width="48" height="48" id="Facebook">
+                  </a>
+                </td>
+                &nbsp;&nbsp;&nbsp;
+                <td width="48">
+                  <a href="https://instagram.com/" target="new" onmouseover="MM_swapImage('Instagram','','http://03e.bb3.myftpupload.com/wp-content/uploads/2014/01/instagram.png',1)" onmouseout="MM_swapImgRestore()">
+                    <img src="img/instagram.png" alt="Follow Us On Instagram" width="48" height="48" id="Instagram">
+                  </a>
+                </td>
+                &nbsp;&nbsp;&nbsp;
+                <td width="48">
+                  <a href="https://twitter.com/" target="new" onmouseover="MM_swapImage('Twitter','','http://03e.bb3.myftpupload.com/wp-content/uploads/2014/01/twitter.jpg',1)" onmouseout="MM_swapImgRestore()">
+                    <img src="img/twitter.png" alt="Follow Us on Twitter" width="48" height="48" id="Twitter">
+                  </a>
+                </td>
+              </tr>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="footer-copyright black">
-        <div class="container center white-text">
-          © 2020 Home Salon and The SuperFancyTeam
+        <div class="footer-copyright black">
+          <div class="container center white-text">
+          © 2020 Home Salon and TheSuperFancyTeam
+          </div>
         </div>
-      </div>
     </footer>
 
     <script src="js/index.js"></script>
