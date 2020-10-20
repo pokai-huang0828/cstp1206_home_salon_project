@@ -1,0 +1,132 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+    <!-- Materialize Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style-profile-list.css">
+
+
+    <title>The Home Salon App</title>
+</head>
+<body>
+
+    <nav class="navbar-fixed transparent z-depth-0">
+        <div class="nav-wrapper container">
+          <a href="#!" class="brand-logo">Home Salon</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="#aboutus">About Us</a></li>
+            <li><a href="#stylists">Our Stylists</a></li>
+            <li><a href="#policy">Site Policy</a></li>
+            <li><a href="#signup">SignUp</a></li>
+            <li><a href="#" class="btn black">Login</a></li>
+          </ul>
+        </div>
+    </nav>
+    
+    <ul class="sidenav" id="mobile-demo">
+        <br>
+        <br>
+        <li><a href="#aboutus">About Us</a></li>
+        <li><a href="#stylists">Our Stylists</a></li>
+        <li><a href="#policy">Site Policy</a></li>
+        <li><a href="#signup">SignUp</a></li>
+        <li><a href="#" class="btn black">Login</a></li>
+    </ul>
+    
+    <div class="profile-search-container">
+
+        <div style="height: 120px;"></div>
+
+        <div class="row selection">
+        <h4 class="bold black-text center">What are you looking for?</h4>
+        <div style="height: 20px;"></div>
+
+            <div class="input-field col s12 m4">
+                <select id="select-category">
+                  <option value="" disabled selected>choose a service</option>
+                  <option value="hair">Hair</option>
+                  <option value="makeup">Makeup</option>
+                </select>
+            </div>
+            <div class="input-field col s12 m4">
+                <select id="select-serviceLocation">
+                  <option value="" disabled selected>choose a service location</option>
+                  <option value="vancouver">Vancouver</option>
+                  <option value="burnaby">Burnaby</option>
+                  <option value="surrey">Surrey</option>
+                  <option value="richmond">Richmond</option>
+                </select>
+            </div>
+            <div class="input-field col s12 m4">
+                <select id="select-gender">
+                  <option value="" disabled selected>specify your stylist gender</option>
+                  <option value="M">Male</option>
+                  <option value="F">Female</option>
+                </select>
+            </div>
+    
+            <div class="center section">
+                <button class="btn-large bold" onclick="searchList()">Search</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="profile-search-container center" id="profile-list-section">
+        <div style="height: 40px;"></div>
+
+        <div class="row selection" id="profile-list">
+            <h4 class="bold">Stylist List</h4>
+            <div style="height: 20px;"></div>
+        </div>
+    </div>
+
+    <div>
+        <p class="center">
+            <a href="#" class="black-text">Back to top</a>
+        </p>
+    </div>
+
+    <footer class="page-footer">
+        <div class="container black-text">
+          <div class="row">
+            <div class="col l6 s12">
+              <h5 class="white-text black">Contact Us</h5>
+              <p class="white-text text-lighten-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, quos soluta quae assumenda dicta consequatur id necessitatibus cumque excepturi libero repellat similique culpa veniam sit voluptatem modi itaque nostrum. Quos?</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+              <h5 class="white-text black">Follow Us On</h5>
+              <ul>
+                <li><a class="white-text text-lighten-3" href="#!">Facebook</a></li>
+                <li><a class="white-text text-lighten-3" href="#!">Instagram</a></li>
+                <li><a class="white-text text-lighten-3" href="#!">Tweeter</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-copyright black">
+          <div class="container center white-text">
+          © 2020 Home Salon and The SuperFancyTeam
+          </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/profile-list.js"></script>
+
+</body>
+</html>
