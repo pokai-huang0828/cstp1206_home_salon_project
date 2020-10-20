@@ -1,0 +1,108 @@
+/* Web App CSS */
+body {
+    font-family: 'Playfair Display', serif;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: rgba(241, 240, 240, 0.979);
+}
+
+nav {
+    font-style: italic;    
+    font-weight: 700;
+}
+
+.bold {
+    font-style: italic;    
+    font-weight: 700;
+    size: 2em;
+}
+
+.navbar-fixed {
+    position: absolute;z-index:999999999;
+}
+
+.btn-large {
+    margin-top: 30%;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.parallax-container {
+    height: 50%;
+}
+
+h1 {
+    font-style: italic;    
+    font-weight: 700;
+}
+
+.slider .indicators .indicator-item.active{
+    background-color: rgb(43, 42, 42);
+}
+
+footer{
+    background-image: url("/img/banner5.jpg");
+    background-position: bottom; 
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* profile-details-page */
+
+.profile-detail-page{
+    background-color: black;
+}
+
+.profile-detail-page .error{
+    padding:10%;
+    font-size: 1.5em;
+    position: absolute;
+    top: 160px;
+    width: 100%;
+    text-align: center;
+    display: none;
+}
+
+.profile-details-container
+{
+    min-height: 105%;
+    width: 100%;
+    background-image: url("/img/banner5.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.profile-details-container .card
+{
+    background-color: transparent !important;
+    margin: auto;
+    top:25px;
+}
+
+.profile-details-container .profile-panel
+{
+    padding:2%;
+}
+
+.profile-detail-page button
+{
+    margin: 20px 0;
+}
+
+.profile-details-container p
+{
+    margin: 1% auto !important;
+}
+
+.profile-detail-table
+{
+    margin:0px;
+    font-size: 0.9em;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 10%;
+}
+
