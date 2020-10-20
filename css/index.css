@@ -1,0 +1,75 @@
+body {
+    font-family: 'Playfair Display', serif;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: rgba(241, 240, 240, 0.979);
+}
+
+nav {
+    font-style: italic;    
+    font-weight: 700;
+}
+
+.bold {
+    font-style: italic;    
+    font-weight: 700;
+    size: 2em;
+}
+
+.navbar-fixed {
+    position: absolute;z-index:999999999;
+}
+
+.btn-large {
+    margin-top: 30%;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.parallax-container {
+    height: 50%;
+}
+
+h1 {
+    font-style: italic;    
+    font-weight: 700;
+}
+
+h2 {
+    margin: 4% 0;
+}
+
+#policy h3 {
+    margin-bottom: 10% !important;
+}
+
+#policy ul{
+    padding-left: 4%;
+}
+
+#policy ul li{
+    list-style-type: circle !important;
+    /* padding-left: 1%; */
+}
+
+.slider .indicators .indicator-item.active{
+    background-color: rgb(43, 42, 42);
+}
+
+.divider{
+    margin: 1%;
+}
+
+blockquote {
+    border-left: 5px solid #2e9c5fc2;
+}
+
+footer{
+    background-image: url("/img/banner5.jpg");
+    background-position: bottom; 
+    background-repeat: no-repeat;
+    background-size: cover;
+}
