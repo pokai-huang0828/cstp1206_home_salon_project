@@ -1,0 +1,44 @@
+/* profile-list-page */
+
+.profile-search-page{
+    background-color: black;
+}
+
+.profile-search-page .error{
+    padding:10%;
+    font-size: 1.5em;
+    position: absolute;
+    top: 160px;
+    width: 100%;
+    text-align: center;
+    display: none;
+}
+
+.profile-search-container
+{
+    min-height: 105%;
+    width: 100%;
+    background-image: url("/img/banner5.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.profile-search-container .selection {
+    background-color: rgba(247, 246, 244, 0.651);
+    width: 70%;
+    padding: 5%;
+}
+.profile-search-container .input-field {
+    box-sizing: border-box;
+    padding: 3%;
+}
+.profile-search-container .input-field select{
+    box-sizing: border-box;
+}
+.profile-search-container .btn-large{
+    margin:0;
+}
+
+.profile-search-container .card button{
+    margin-top: 5%;
+}
