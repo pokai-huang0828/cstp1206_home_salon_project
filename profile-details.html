@@ -1,0 +1,204 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- Materialize Icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <!-- Google fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/style-profile-list-details.css" />
+
+    <title>The Home Salon App</title>
+  </head>
+  <body class="profile-detail-page">
+    <nav class="navbar-fixed transparent z-depth-0">
+      <div class="nav-wrapper container">
+        <a href="index.html" class="brand-logo">Home Salon</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="index.html/#aboutus">About Us</a></li>
+          <li><a href="index.html/#stylists">Our Stylists</a></li>
+          <li><a href="index.html/#policy">Site Policy</a></li>
+          <li><a href="index.html/#signup">SignUp</a></li>
+          <li><a href="#" class="btn black">Login</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+      <br />
+      <br />
+      <li><a href="index.html/#aboutus">About Us</a></li>
+      <li><a href="index.html/#stylists">Our Stylists</a></li>
+      <li><a href="index.html/#policy">Site Policy</a></li>
+      <li><a href="index.html/#signup">SignUp</a></li>
+      <li><a href="#" class="btn black">Login</a></li>
+    </ul>
+
+    <div class="error white-text bold black">
+      <span>Opps! This profile does not exist. Please try again.</span></br>
+      <button class="btn" onclick="goBack()"><i class="inline-icon material-icons">arrow_back</i>Back</button>
+    </div>
+
+
+    <div class="profile-details-container">
+      <div style="height: 80px;"></div>
+      <div class="row">
+        <div class="card container">
+
+          <div class="card-content black-text bold center">
+            <h4>Profile Details </h4>
+          </div>
+
+          <div class="card-tabs">
+            <ul class="tabs tabs-fixed-width">
+              <li class="tab"><a class="active" href="#profile">Profile</a></li>
+              <li class="tab"><a href="#portfolio">Portfolio</a></li>
+              <li class="tab"><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="card-content lighten-4">
+            <div id="profile">
+              <div class="row">
+                <div class="profile-panel col s12 m4 center z-depth-1">
+                  <img
+                    class="responsive-img circle"
+                    id="profile_pic"
+                    src="img/imstylist.jpeg"
+                    alt="profile-pic"
+                  />
+                  <h5 class="bold">Hi, My Name is <br><span id="name">Popo!</span></h5>
+                  <button class="btn disabled">BOOK ME!</button>
+                  <p>Member Since: <span id="signUpDate"></span></p>
+                  <p>Rating: <span id="rating"></span></p>
+                </div>
+                <div class="col s12 m8">
+                  <table class="profile-detail-table">
+                    <tbody>
+                      <tr>
+                        <td class="bold">Name</td>
+                        <td><span id="name_"></span></td>
+                      </tr>
+                      <tr>
+                        <td class="bold">Gender</td>
+                        <td><span id="gender"></span></td>
+                      </tr>
+                      <tr>
+                        <td class="bold">Professional Experience</td>
+                        <td><span id="professionalExperience"></span> year(s)</td>
+                      </tr>
+                      <tr>
+                        <td class="bold">Category</td>
+                        <td><span id="category"></span></td>
+                      </tr>
+                      <tr>
+                        <td class="bold">Service Location</td>
+                        <td><span id="serviceLocation"></span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="priceList center">
+                    <h5 class="bold">Pricing</h5>
+                    <div>
+                      <span id="pricing"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="portfolio">no portfolio yet</div>
+            <div id="contact">
+              <table class="profile-detail-table">
+                <tbody>
+                  <tr>
+                    <td class="bold">Email</td>
+                    <td><span id="email"></span></td>
+                  </tr>
+                  <tr>
+                    <td class="bold">Tel.</td>
+                    <td><span id="phoneNumber"></span></td>
+                  </tr>
+
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="container backButton">
+        <button class="btn right" onclick="goBack()"><i class="inline-icon material-icons">arrow_back</i>Back</button>
+      </div>
+      
+
+    </div>
+
+
+    <div>
+      <p class="center">
+        <a href="#" class="white-text">Back to top</a>
+      </p>
+    </div>
+
+    <footer class="page-footer">
+      <div class="container black-text">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text black">Contact Us</h5>
+            <p class="white-text text-lighten-4">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, quos
+              soluta quae assumenda dicta consequatur id necessitatibus cumque
+              excepturi libero repellat similique culpa veniam sit voluptatem
+              modi itaque nostrum. Quos?
+            </p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text black">Follow Us On</h5>
+            <ul>
+              <li>
+                <a class="white-text text-lighten-3" href="#!">Facebook</a>
+              </li>
+              <li>
+                <a class="white-text text-lighten-3" href="#!">Instagram</a>
+              </li>
+              <li>
+                <a class="white-text text-lighten-3" href="#!">Tweeter</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright black">
+        <div class="container center white-text">
+          © 2020 Home Salon and The SuperFancyTeam
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/index.js"></script>
+    <script src="js/profile-details.js"></script>
+
+  </body>
+</html>
