@@ -34,7 +34,7 @@ The following is a list of features to be included at project completion:
 
 Iteration 1
 
-# Authors and Acknowledgment
+# Authors
 
 Pokai Haung
 Harleen Jhamat
