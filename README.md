@@ -22,7 +22,7 @@ The following is a list of features to be included at project completion:
 
 * Git clone the Home Salon Webapp Project:
 
-`git clone https://github.com/pokai-huang0828/cstp1206_home_salon_project.git`
+    `git clone https://github.com/pokai-huang0828/cstp1206_home_salon_project.git`
 
 * Open the cloned project using VScode.
 
