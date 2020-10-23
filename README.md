@@ -2,19 +2,19 @@
 
 ## Description
 
-    HOME SALON is a service-booking webapp intended to bring personalized styling services to a customer’s doorstep. This project is to be completed in 5 iterations. 
+HOME SALON is a service-booking webapp intended to bring personalized styling services to a customer’s doorstep. This project is to be completed in 5 iterations. 
 
-    The following is a list of features to be included at project completion:
+The following is a list of features to be included at project completion:
 
-    - [x] Customers can browse business profiles
-    - [ ] Customers can book for styling services
-    - [x] Customers can search for stylists by category
-    - [ ] Customers can review business service
-    - [ ] Stylists can edit their business profiles
-    - [ ] Stylists can manage service bookings
-    - [ ] Both Customers and Stylists can file reports to Web-Admin
-    - [ ] Web-Admin can manage all users
-    - [ ] Web-Admin can manage filed reports
+- [x] Customers can browse business profiles
+- [ ] Customers can book for styling services
+- [x] Customers can search for stylists by category
+- [ ] Customers can review business service
+- [ ] Stylists can edit their business profiles
+- [ ] Stylists can manage service bookings
+- [ ] Both Customers and Stylists can file reports to Web-Admin
+- [ ] Web-Admin can manage all users
+- [ ] Web-Admin can manage filed reports
 
 ## Installation
 
@@ -30,12 +30,12 @@
 
 ## Current Project Status
 
-    Iteration 1
+Iteration 1
 
 ## Authors
 
-    Pokai Haung
+Pokai Haung
 
-    Harleen Jhamat
+Harleen Jhamat
 
-    Eric Cheung
+Eric Cheung
