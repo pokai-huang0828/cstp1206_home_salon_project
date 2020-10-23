@@ -4,7 +4,7 @@
 
 HOME SALON is a service-booking webapp intended to bring personalized styling services to customers. This project is to be completed in 5 iterations. 
 
-The following is a list of features to be included at project completion:
+The following is a list of features to be implemented at project completion:
 
 - [x] Customers can browse business profiles
 - [ ] Customers can book for styling services
