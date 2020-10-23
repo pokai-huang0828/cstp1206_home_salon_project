@@ -6,7 +6,7 @@ CSTP1206 Home Salon Webapp Project
 
 HOME SALON is a service-booking webapp intended to bring personalized styling services to a customer’s doorstep. This project is to be completed in 5 iterations. 
 
-The following is a list of included features at project completion:
+The following is a list of features to be included at project completion:
 
 - Customers can browse business profiles
 - Customers can book for styling services
@@ -30,12 +30,12 @@ The following is a list of included features at project completion:
 
 * Serve index.html in the root directory with the live server. 
 
-# Project status
+# Current Project Status
 
 Iteration 1
 
 # Authors and Acknowledgment
 
 Pokai Haung
-Harleen
+Harleen Jhamat
 Eric Cheung
