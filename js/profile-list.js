@@ -11,7 +11,7 @@ function displayList(data){
     list = document.getElementById("profile-list");
 
     for(var p in data){
-        console.log(data[p]);
+        //console.log(data[p]);
 
         var root_div = document.createElement("div");
         root_div.className = "col s12 m3";
