@@ -18,7 +18,7 @@
 
 The sign-up page use case is available in the homepage. If the user clicks sign-in on the top right corner of the page, it takes it to a "Sign-up now!" button down on the same page. After clicking the button, the sign-up page opens in which the user can fill in the details like Name, Password, Phone number, Email and Gender (User needs to fill all these details otherwise error will be displayed) and can make an account by clicking the "SIGN UP" button at the bottom. If the user does not wants to make the account, he/she can simply click the "BACK TO HOME" option to get back to the homepage.
 
-### Login as a designer use case
+### Login as a Designer Use Case
 
 Use cases for the registration page are provided at the top of the homepage. After the registration is completed, it will automatically move to the home page after login. The user clicks the "Logout" option in the upper right corner of the page, and it will log out.
 Next time you need to log in, press the "Login" button on the same page. After clicking the button, the login page will open, where the user can enter the email and password. Log in by clicking the "Login" button at the bottom. If the user does not want to log in to the account, they can click the "X" option at the top right to return to the home page.
