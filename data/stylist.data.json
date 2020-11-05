@@ -1,0 +1,59 @@
+[
+  {
+    "userID": "ab1",
+    "professionalExperience": "9",
+    "rating": 4.3,
+    "serviceLocation": ["vancouver", "burnaby"],
+    "category": ["hair"],
+    "priceList": "hair $49",
+    "portfolio": ["img/banner1.jpg", "img/banner2.jpg"]
+  },
+  {
+    "userID": "fc2",
+    "professionalExperience": 6,
+    "rating": 3.9,
+    "serviceLocation": ["burnaby"],
+    "category": ["hair"],
+    "priceList": "hair $29",
+    "portfolio": []
+  },
+  {
+    "userID": "m8UCuRWHR0",
+    "professionalExperience": "",
+    "rating": "",
+    "serviceLocation": ["burnaby"],
+    "category": "",
+    "priceList": "",
+    "portfolio": ""
+  },
+  {
+    "userID": "3rDC6VCSEb",
+    "professionalExperience": "",
+    "rating": "",
+    "serviceLocation": "",
+    "category": "",
+    "priceList": "",
+    "portfolio": ["", ""]
+  },
+  {
+    "userID": "0eWekLEhHU",
+    "professionalExperience": "",
+    "rating": "",
+    "serviceLocation": "",
+    "category": "",
+    "priceList": "",
+    "portfolio": ""
+  },
+  {
+    "userID": "sUopqV72aL",
+    "professionalExperience": "",
+    "rating": "",
+    "serviceLocation": "",
+    "category": "",
+    "priceList": "call me for prices.",
+    "portfolio": [
+      "https://www.nerdwallet.com/assets/blog/wp-content/uploads/2017/10/GettyImages-947995974.jpg",
+      ""
+    ]
+  }
+]
