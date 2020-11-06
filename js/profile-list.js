@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', async function() {
-    
-    data = await getData();
+
+    fileName = '../data/stylist_user.data.json';
+    data = await getData(fileName);
     data = filterList(data);
     displayList(data);    
     
@@ -11,7 +12,6 @@ function displayList(data){
     list = document.getElementById("profile-list");
 
     for(var p in data){
-        //console.log(data[p]);
 
         var root_div = document.createElement("div");
         root_div.className = "col s12 m3";
@@ -21,6 +21,9 @@ function displayList(data){
 
         var card_image_div = document.createElement("div");
         card_image_div.className = "card-image";
+
+        var img_object_div = document.createElement("object");
+        img_object_div.data = "img/defaultProfilePic.png";
 
         var profile_img = document.createElement("img");
         profile_img.src = data[p]["profilePic"];
@@ -38,9 +41,10 @@ function displayList(data){
         button.className = "btn-small";
         button.id = data[p]["userID"];
         button.innerText = "More Info";
-        button.onclick = getDetail;
+        button.onclick = goToDetailPage;
         
-        card_image_div.appendChild(profile_img);
+        img_object_div.appendChild(profile_img)
+        card_image_div.appendChild(img_object_div);
 
         card_content_div.appendChild(name_p);
         card_content_div.appendChild(rating_p);
@@ -54,8 +58,8 @@ function displayList(data){
 
 }
 
-function getDetail(){
-    window.location.href = "profile-details.html?id="+this.id;
+function goToDetailPage(){
+    window.location.href = "profile-details.html?id=" + this.id;
 }
 
 function filterList(data){
@@ -97,6 +101,6 @@ function getUserSelection(){
     return searchItems;
 }
 
-function getData(){
-    return fetch('../data/data.json').then((data)=> data.json());
+function getData(fileName){
+    return fetch(fileName).then((data)=> data.json());
 }

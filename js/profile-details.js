@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', async function() {
     let id = getParamID();
 
     // get data from database
-    let data = await getData();
+    fileName = '../data/stylist_user.data.json';
+    let data = await getData(fileName);
 
     if(!data){
         displayError();
@@ -12,6 +13,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         // find the correct data
         profile = findProfileByID(data, id);
         
+        console.log(profile);
         // display data
         if(!profile){
             displayError();
@@ -31,8 +33,8 @@ function getParamID(){
     return params.get("id");
 }
 
-function getData(){
-    return fetch('../data/data.json').then((data)=> data.json());
+function getData(fileName){
+    return fetch(fileName).then((data)=> data.json());
 }
 
 function findProfileByID(data, id){
