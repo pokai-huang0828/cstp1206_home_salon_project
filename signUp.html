@@ -1,0 +1,231 @@
+<html lang="en"> 
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- Materialize Icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <!-- Google fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/form.css" />
+
+    <title>The Home Salon App</title>
+  </head>
+  <body class="profile-detail-page">
+
+    <!-- Nav -->
+
+    <nav class="navbar-fixed transparent z-depth-1">
+      <div class="nav-wrapper container">
+        <a href="index.html" class="brand-logo"><img src="img/Logo4.png" height = 60 width = 160></a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+
+            <!-- Display only when user is not signed in  -->
+            <li class="visitorOnly"><a href="#signup"class="btn green darken-2">SignUp</a></li>
+            <li class="visitorOnly"><a href="#" class="btn black white-text loginToggle">Login</a></li>
+
+            <!-- Display only when user is signed in -->
+            <li class="userOnly"><span class="badge white-text welcomeTag" style="margin-top:20px;"}></span></li>
+            <li class="userOnly"><a href="stylistEdit.html"><i class="material-icons" style="bottom:100px;">edit</i></a></li>
+            <li class="userOnly"><a href="#" class="btn red white-text" onclick="signOut()">Logout</a></li>
+
+        </ul>
+      </div>
+  </nav>
+
+  <!-- Login Form -->
+  <div class="visitorOnly" id="loginFormDiv">
+    <p class="cross right loginToggle">X</p>
+    <h2>Login</h2>
+    <div class="loginForm" id="loginForm">
+      
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="loginEmail" required>
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="loginPassword" required>
+
+      <!-- show error text -->
+      <div class="red-text center" id="loginError"></div>
+
+      <button class="btn" name="loginSubmit" onclick="signIn()">Login</button>
+    </div>
+  </div>
+  
+  <!-- Mobile Side bar -->
+  <ul class="sidenav" id="mobile-demo">
+
+      <br>
+      <br>
+      <br>
+
+      <div class="visitorOnly">
+        <li><a href="#signup"class="btn green darken-2">SignUp</a></li>
+        <li><a href="#" class="btn black white-text loginToggle">Login</a></li>
+      </div>
+
+      <div class="userOnly">
+        <li><span class="black-text welcomeTag" style="margin-left:31px;"></span></li>
+        <li><a href="stylistEdit.html"><i class="material-icons">edit</i></a></li>
+        <li><a href="#" class="btn red white-text" onclick="signOut()">Logout</a></li>
+      </div>
+
+  </ul>
+
+  <!-- end of nav -->
+
+  <!-- Main Content -->
+
+  <div class="background">
+    
+    <div class="container black-text" style="height:100%;">
+    
+        <div style="height:55px"></div>
+
+        <div class="formDiv">
+            
+            <form action="" method="post">
+                <h2 class="bold">Sign Up</h2>
+                
+                <div id="error_msg" class="center red-text"></div>
+
+                <label for="firstName"><b>First Name</b></label>
+                <input type="text" name="firstName" id="firstName" required>
+                <br>
+        
+                <label for="lastName"><b>Last Name</b></label>
+                <input type="text" name="lastName" id="lastName" required>
+                <br>
+        
+                <label for="psw"><b>Password</b></label>
+                <input type="password" name="password" id="password" required>
+                <br>
+                
+                <label for="phoneNumber"><b>Phone Number</b></label>
+                <input type="text" name="phoneNumber" id="phoneNumber" required>
+                <br>
+
+                <label for="email"><b>Email</b></label>
+                <input type="text" name="email" id="email" required>
+                <br>
+    
+                <label for="gender"><b>Gender</b></label><br>
+                <input name="gender" id="gender" type="radio" value="" required/>
+                <p>
+                <label>
+                <input name="gender" type="radio" id="male" value="male" checked/>
+                <span>M</span>
+                </label>
+                </p>
+                <p>
+                <label>
+                <input name="gender" type="radio" id="female" value="female"/>
+                <span>F</span>
+                </label>
+                </p>
+                <p>
+     
+                <label for="role"><b>Please pick one of the following:</b></label><br>
+                <input name="role" id="role" type="radio" value="" checked/>
+                <p>
+                <label>
+                <input disabled="disabled" name="role" id="customer" type="radio" value="customer"/>
+                <span>I am a Customer.</span>
+                </label>
+                </p>
+                <p>
+                <label>
+                <input name="role" type="radio" id="stylist" value="stylist" checked/>
+                <span>I am a Stylist.</span>
+                </label>
+                </p>
+        
+                <div class="center section">
+                  <div class="btn" onclick="signUp()">Sign Up</div>
+                  <a href="index.html"><div type="button" class="cancel red btn">Cancel</div></a>
+                </div>         
+            </form>   
+
+        </div>
+    </div>
+
+    </div>
+
+
+    <!-- End of Main Content -->
+
+
+  <!-- Footer -->
+
+    <div>
+      <p class="center">
+        <a href="#" class="black-text">Back to top</a>
+      </p>
+    </div>
+
+    <footer class="page-footer">
+        <div class="container black-text">
+          <div class="row">
+            <div class="col l6 s12">
+              <h5 class="white-text ">Contact Us</h5>
+              <p class="white-text text-lighten-4">We enjoy getting feedback from our clients and potential clients. If you have any query or want to know more,</p>
+              <p class="white-text text-lighten-4">Send us an email at: <a href="mailto:info@homesalon.com">info@homesalon.com</a></p>
+              <p class="white-text text-lighten-4">Or call: +1 987-654-3210</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+              <h5 class="white-text">Follow Us On</h5>
+              <tr>
+                <td width="48">
+                  <a href="https://www.facebook.com/" target="new" onmouseover = "M_swapImage('Facebook','','http://03e.bb3.myftpupload.com/wp-content/uploads/2014/01/facebook.png',1)" onmouseout="MM_swapImgRestore()">
+                    <img src="img/facebook.png" alt="Follow us on Facebook" width="48" height="48" id="Facebook">
+                  </a>
+                </td>
+                &nbsp;&nbsp;&nbsp;
+                <td width="48">
+                  <a href="https://instagram.com/" target="new" onmouseover="MM_swapImage('Instagram','','http://03e.bb3.myftpupload.com/wp-content/uploads/2014/01/instagram.png',1)" onmouseout="MM_swapImgRestore()">
+                    <img src="img/instagram.png" alt="Follow Us On Instagram" width="48" height="48" id="Instagram">
+                  </a>
+                </td>
+                &nbsp;&nbsp;&nbsp;
+                <td width="48">
+                  <a href="https://twitter.com/" target="new" onmouseover="MM_swapImage('Twitter','','http://03e.bb3.myftpupload.com/wp-content/uploads/2014/01/twitter.jpg',1)" onmouseout="MM_swapImgRestore()">
+                    <img src="img/twitter.png" alt="Follow Us on Twitter" width="48" height="48" id="Twitter">
+                  </a>
+                </td>
+              </tr>
+            </div>
+          </div>
+        </div>
+        <div class="footer-copyright black">
+          <div class="container center white-text">
+          © 2020 Home Salon and TheSuperFancyTeam
+          </div>
+        </div>
+    </footer>
+
+    <script src="js/index.js"></script>
+    <script src="js/signUp.js"></script>
+
+  </body>
+</html>
