@@ -1,0 +1,7 @@
+POST http://localhost/inc/utilities/SignInController.php HTTP/1.1
+content-type: application/json
+
+{
+    "email": "aburston0@squidoo.com",
+    "password": "123"
+}

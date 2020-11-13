@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="en"> 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,40 +15,87 @@
     <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,700&display=swap" rel="stylesheet">
 
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <link rel="stylesheet" href="css/index.css">
 
     <title>The Home Salon App</title>
 </head>
+
 <body>
 
-    <!-- Top Menu Bar -->
+    <!-- Nav Bar -->
     <nav class="navbar-fixed transparent z-depth-0">
       <div class= "col s12 z-depth-1">
         <div class="nav-wrapper container">
-          <a href="index.html" class="brand-logo"><img src="img/Logo4.png" height = 60 width = 160></a>
+          <a href="#" class="brand-logo"><img src="img/Logo4.png" height = 60 width = 160></a>
           <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
-            <li><a href="#aboutus">About Us</a></li>
-            <li><a href="#stylists">Our Stylists</a></li>
-            <li><a href="#policy">Site Policy</a></li>
-            <li><a href="#signup"class="btn disabled">SignUp</a></li>
-            <li><a href="#" class="btn black white-text disabled">Login</a></li>
+
+            <!-- Display only in index.html-->
+            <li class="indexOnly"><a href="#aboutus">About Us</a></li>
+            <li class="indexOnly"><a href="#stylists">Our Stylists</a></li>
+            <li class="indexOnly"><a href="#policy">Site Policy</a></li>
+
+            <!-- Display only when user is not signed in  -->
+            <li class="visitorOnly"><a href="#signup"class="btn green darken-2">SignUp</a></li>
+            <li class="visitorOnly"><a href="#" class="btn black white-text loginToggle">Login</a></li>
+
+            <!-- Display only when user is signed in -->
+            <li class="userOnly"><span class="badge white-text welcomeTag" style="margin-top:20px;"}></span></li>
+            <li class="userOnly"><a href="stylistEdit.html"><i class="material-icons" style="bottom:100px;">edit</i></a></li>
+            <li class="userOnly"><a href="#" class="btn red white-text" onclick="signOut()">Logout</a></li>
+
           </ul>
         </div>
       </div>
     </nav>
+
+    <!-- Login Form -->
+    <div class="visitorOnly" id="loginFormDiv">
+      <p class="cross right loginToggle">X</p>
+      <h2>Login</h2>
+      <div class="loginForm" id="loginForm">
+        
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="loginEmail" required>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="loginPassword" required>
+
+        <!-- show error text -->
+        <div class="red-text center" id="loginError"></div>
+
+        <button class="btn" name="loginSubmit" onclick="signIn()">Login</button>
+      </div>
+    </div>
 
     <!-- Mobile Side bar -->
     <ul class="sidenav" id="mobile-demo">
         <br>
         <br>
         <br>
-        <li><a href="#aboutus">About Us</a></li>
-        <li><a href="#stylists">Our Stylists</a></li>
-        <li><a href="#policy">Site Policy</a></li>
-        <li><a href="#signup" class="btn disabled">SignUp</a></li>
-        <li><a href="#" class="btn black disabled" class="btn disabled">Login</a></li>
+
+        <div class="indexOnly">
+          <li><a href="#aboutus">About Us</a></li>
+          <li><a href="#stylists">Our Stylists</a></li>
+          <li><a href="#policy">Site Policy</a></li>
+        </div>
+
+        <div class="visitorOnly">
+          <li><a href="#signup"class="btn green darken-2">SignUp</a></li>
+          <li><a href="#" class="btn black white-text loginToggle">Login</a></li>
+        </div>
+
+        <div class="userOnly">
+          <li><span class="black-text welcomeTag" style="margin-left:31px;"></span></li>
+          <li><a href="stylistEdit.html"><i class="material-icons">edit</i></a></li>
+          <li><a href="#" class="btn red white-text" onclick="signOut()">Logout</a></li>
+        </div>
+
     </ul>
+
+    <!-- End of Nav -->
 
     <!-- Promotional Slider -->
     <div class="slider">
@@ -165,12 +212,8 @@
 
           <div class="col s12 m4">
             <div class="card">
-              <div class="card-image center">
-
-                <object data="img/defaultProfilePic.png" type="image/png">
+              <div class="card-image">
                 <img src="https://robohash.org/voluptatesquosqui.jpg?size=50x50&set=set1" height = 250, width = 200>
-                </object>
-
               </div>
               <div class="card-content">
                 <span class="card-title activator black-text"><h5>Alexandros Baitson</h5></span>
@@ -184,10 +227,8 @@
 
           <div class="col s12 m4">
             <div class="card">
-              <div class="card-image center">
-                <object data="img/defaultProfilePic.png" type="image/png">
+              <div class="card-image">
                 <img src="https://robohash.org/porrodoloribusreprehenderit.jpg?size=50x50&set=set1" height = 250, width = 200>
-                </object>
               </div>
               <div class="card-content">
                 <span class="card-title activator black-text"><h5>Conchita Attridge</h5></span>
@@ -201,10 +242,8 @@
 
           <div class="col s12 m4">
             <div class="card">
-              <div class="card-image center">
-                <object data="img/defaultProfilePic.png" type="image/png">
+              <div class="card-image">
                 <img src="https://robohash.org/voluptassedconsequatur.jpg?size=50x50&set=set1" height = 250, width = 200>
-                </object>
               </div>
               <div class="card-content">
                 <span class="card-title activator black-text"><h5>Florie Winham</h5></span>
@@ -227,47 +266,51 @@
     <div class="divider"></div>
 
     <!-- Sign Up Section -->
-    <div class="container" id="signup">
+    <div class="container visitorOnly" id="signup">
 
         <h2>Sign Up</h2>
 
         <div class="row">
 
-            <div class="col s12 m6">
-                <div class="card med ">
-                <!-- Card Content -->
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator " src="img/imcustomer.jpeg">
-                    </div>
-                    <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">I'm a Customer<i class="material-icons right">more_vert</i></span>
-                    <p><a href="#" class="btn disabled">Sign up</a></p>
-                    </div>
-                    <!--
-                    <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                    </div>-->
+          <div class="col l6 s12">
+            <div class="card med ">
+            <!-- Card Content -->
+            <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator " src="img/imcustomer.jpeg">
                 </div>
+                <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">I'm a Customer<i class="material-icons right">more_vert</i></span>
+                <!-- <p><a href="#" class="btn disabled">Sign up</a></p> -->
+                </div>
+                <!--
+                <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                </div>-->
             </div>
+        </div>
 
-            <div class="col s12 m6">
-                <div class="card med">
-                <!-- Card Content -->
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="img/imstylist.jpeg">
-                    </div>
-                    <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">I'm a Stylist<i class="material-icons right">more_vert</i></span>
-                    <p><a href="#" class="btn disabled">sign up</a></p>
-                    </div>
-                    <!--
-                    <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                    </div>-->
+        <div class="col l6 s12">
+            <div class="card med">
+            <!-- Card Content -->
+            <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="img/imstylist.jpeg">
                 </div>
+                <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">I'm a Stylist<i class="material-icons right">more_vert</i></span>
+                <!-- <p><a href="signUp.php" class="btn">sign up</a></p> -->
+                </div>
+                <!--
+                <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                </div>-->
             </div>
+        </div>
+
+            <div class="row center">
+              <a href="signUp.html"><button class="green darken-2 btn-large bold"><i class="material-icons">near_me</i> Sign up Now</button></a>
+          </div>  
 
         </div>
     </div>
