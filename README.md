@@ -13,8 +13,6 @@ The following is a list of features to be implemented at project completion:
 - [x] Stylists can edit their business profiles
 - [ ] Stylists can manage service bookings
 - [ ] Both Customers and Stylists can file reports to Web-Admin
-- [ ] Web-Admin can manage all users
-- [ ] Web-Admin can manage filed reports
 
 ## Installation
 
