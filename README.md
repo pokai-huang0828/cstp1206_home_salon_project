@@ -22,19 +22,19 @@ The following is a list of features to be implemented at project completion:
 
     `git clone https://github.com/pokai-huang0828/cstp1206_home_salon_project.git`
 
-2. Backup and clear out the current files in C:\xampp\htdocs and add the project code to the folder.
+2. Backup and clear out the current files in `C:\xampp\htdocs` and add the project code to the folder.
 
 3. To configure Apache server, open Xampp and click "Config" button in front of Apache. Then select "Apache (httpd.conf)". Add the following lines to the file and save the file. 
 
-- #Allow Apache to accept requests from all other domains.
+`#Allow Apache to accept requests from all other domains.`
 
-- Header set Access-Control-Allow-Origin "*"
+`Header set Access-Control-Allow-Origin "*"`
 
-- Header set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"
+`Header set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"`
 
-4. Start Apache
+4. (Re)start the Apache Server
 
-5. Open the cloned project using VScode.
+5. Cloned the home-salon project and place the content of the project into `C:\xampp\htdocs`.
 
 6. Download a Live Server Extension in VScode.
 
