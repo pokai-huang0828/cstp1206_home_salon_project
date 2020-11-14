@@ -1,0 +1,82 @@
+.formDiv {
+    background-color: rgba(248, 248, 248, 0.836);
+    padding: 1% 1% 1% 5%;
+    margin:2% auto;
+    width: 90%;
+    border-radius: 5%;
+}
+
+.formDiv form {
+    width: 90%;
+    margin: 0 auto;
+}
+
+label, input {
+    color: black;
+    font-size: 1.1em !important;
+}
+
+input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea{
+   border-bottom: 1.3px solid black; 
+}
+
+[type="radio"]:checked+span:after{
+    background-color: black;
+    border: none;
+}
+
+hr {
+    margin:3% 0;
+}
+
+h5 {
+    margin:3% 0;
+}
+
+.inputGroupDiv{
+    text-align: left;
+    padding: 20px;
+}
+
+.groupInput{
+    margin: 5%;
+}
+
+.urlInput{
+    width: 95% !important;
+    margin: 5%;
+}
+
+label {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+textarea{
+    margin: 10px 0;
+}
+
+textarea::placeholder {
+    color: rgba(82, 82, 82, 0.822);  
+}
+
+/* Stylist Edit Page */
+
+#stylistEditForm {
+    display: block;
+}
+
+#stylistEditNotFoundError {
+    text-align: center;
+    min-height: 500px;
+    display: none;
+    position: relative;
+}
+
+#stylistEditNotFoundError p{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
