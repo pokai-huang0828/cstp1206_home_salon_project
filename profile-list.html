@@ -15,38 +15,75 @@
     <!-- Google fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,700&display=swap" rel="stylesheet">
 
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/style-profile-list.css">
 
 
     <title>The Home Salon App</title>
 </head>
-<body>
+<body class="background">
+
+    <!-- Nav -->
 
     <nav class="navbar-fixed transparent z-depth-1">
-        <div class="nav-wrapper container">
-          <a href="index.html" class="brand-logo"><img src="img/Logo4.png" height = 60 width = 160></a>
-          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-          <ul class="right hide-on-med-and-down">
-            <!-- <li><a href="#aboutus">About Us</a></li>
-            <li><a href="#stylists">Our Stylists</a></li>
-            <li><a href="#policy">Site Policy</a></li> -->
-            <li><a href="#signup" class="btn disabled">SignUp</a></li>
-            <li><a href="#" class="btn black disabled">Login</a></li>
-          </ul>
-        </div>
-    </nav>
-    
-    <ul class="sidenav" id="mobile-demo">
-        <br>
-        <br>
-        <br>
-        <!-- <li><a href="#aboutus">About Us</a></li>
-        <li><a href="#stylists">Our Stylists</a></li>
-        <li><a href="#policy">Site Policy</a></li> -->
-        <li><a href="#signup">SignUp</a></li>
-        <li><a href="#" class="btn black">Login</a></li>
-    </ul>
+      <div class="nav-wrapper container">
+        <a href="index.html" class="brand-logo"><img src="img/Logo4.png" height = 60 width = 160></a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+
+            <!-- Display only when user is not signed in  -->
+            <li class="visitorOnly"><a href="index.html#signup"class="btn green darken-2">SignUp</a></li>
+            <li class="visitorOnly"><a href="#" class="btn black white-text loginToggle">Login</a></li>
+
+            <!-- Display only when user is signed in -->
+            <li class="userOnly"><span class="badge white-text welcomeTag" style="margin-top:20px;"}></span></li>
+            <li class="userOnly"><a href="stylistEdit.html"><i class="material-icons" style="bottom:100px;">edit</i></a></li>
+            <li class="userOnly"><a href="#" class="btn red white-text" onclick="signOut()">Logout</a></li>
+
+        </ul>
+      </div>
+  </nav>
+
+  <!-- Login Form -->
+  <div class="visitorOnly" id="loginFormDiv">
+    <p class="cross right loginToggle">X</p>
+    <h2>Login</h2>
+    <div class="loginForm" id="loginForm">
+      
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="loginEmail" required>
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="loginPassword" required>
+
+      <!-- show error text -->
+      <div class="red-text center" id="loginError"></div>
+
+      <button class="btn" name="loginSubmit" onclick="signIn()">Login</button>
+    </div>
+  </div>
+  
+  <!-- Mobile Side bar -->
+  <ul class="sidenav" id="mobile-demo">
+
+      <br>
+      <br>
+      <br>
+ 
+      <div class="visitorOnly">
+        <li><a href="index.html#signup"class="btn green darken-2">SignUp</a></li>
+        <li><a href="#" class="btn black white-text loginToggle">Login</a></li>
+      </div>
+
+      <div class="userOnly">
+        <li><span class="black-text welcomeTag" style="margin-left:31px;"></span></li>
+        <li><a href="stylistEdit.html"><i class="material-icons">edit</i></a></li>
+        <li><a href="#" class="btn red white-text" onclick="signOut()">Logout</a></li>
+      </div>
+
+  </ul>
     
     <div class="profile-search-container">
 
@@ -66,17 +103,17 @@
             <div class="input-field col s12 m4">
                 <select id="select-serviceLocation">
                   <option value="" disabled selected>choose a service location</option>
-                  <option value="vancouver">Vancouver</option>
-                  <option value="burnaby">Burnaby</option>
-                  <option value="surrey">Surrey</option>
-                  <option value="richmond">Richmond</option>
+                  <option value="Vancouver">Vancouver</option>
+                  <option value="Burnaby">Burnaby</option>
+                  <option value="Surrey">Surrey</option>
+                  <option value="Richmond">Richmond</option>
                 </select>
             </div>
             <div class="input-field col s12 m4">
                 <select id="select-gender">
                   <option value="" disabled selected>specify your stylist gender</option>
-                  <option value="M">Male</option>
-                  <option value="F">Female</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
                 </select>
             </div>
     
@@ -96,7 +133,7 @@
         </div>
     </div>
 
-    <div class="black">
+    <div class="transparent">
         <p class="center">
             <a href="#" class="white-text">Back to top</a>
         </p>
