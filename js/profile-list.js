@@ -1,18 +1,64 @@
 document.addEventListener('DOMContentLoaded', async function() {
 
-    fileName = '../data/stylist_user.data.json';
+    fileName = 'http://localhost/inc/utilities/StylistController.php';
     data = await getData(fileName);
+
     data = filterList(data);
+
     displayList(data);    
     
 });
+
+function getData(fileName){
+    return fetch(fileName).then((data)=> data.json());
+}
+
+function filterList(data){
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // pair => key and value of the query terms, ie: ["category", "hair"]
+    for(var pair of urlParams.entries()) {
+
+        data = data.filter(profile => profile[pair[0]] == pair[1]);
+
+    }
+
+    return data;   
+}
+
+function searchList(){
+    selection = getUserSelection();
+
+    url = "profile-list.html";
+    query = "?";
+
+    for ( item in selection){
+        if(item == "category" || item == "service" || item == "gender"){
+            selection[item] != "" ? query += `${item}=${selection[item]}&` : query += "";
+        }
+    }
+
+    if(query == "?") setUrl(url);
+    url += query.slice(0, query.length-1);
+    setUrl(url);
+}
+
+function getUserSelection(){
+    var searchItems = {};
+    var userSelection = document.getElementsByTagName("select");
+    for (let item of userSelection){
+        item_id = item.id.replace("select-", "");
+        searchItems[item_id] = item.options[item.selectedIndex].value;
+    }
+    return searchItems;
+}
 
 function displayList(data){
 
     list = document.getElementById("profile-list");
 
     for(var p in data){
-
+        
         var root_div = document.createElement("div");
         root_div.className = "col s12 m3";
         
@@ -62,45 +108,6 @@ function goToDetailPage(){
     window.location.href = "profile-details.html?id=" + this.id;
 }
 
-function filterList(data){
-    const urlParams = new URLSearchParams(window.location.search);
-
-    for(var pair of urlParams.entries()) {
-        data = data.filter(profile => profile[pair[0]] == pair[1]);
-    }
-
-    return data    
-}
-
-function searchList(){
-    selection = getUserSelection();
-
-    url = "profile-list.html";
-    query = "?";
-
-    for ( item in selection){
-        selection[item] != "" ? query += `${item}=${selection[item]}&` : query += "";
-    }
-
-    if(query == "?") setUrl(url);
-    url += query.slice(0, query.length-1);
-    setUrl(url);
-}
-
 function setUrl(url){
     window.location.href = url + "#profile-list-section";  
-}
-
-function getUserSelection(){
-    var searchItems = {};
-    var userSelection = document.getElementsByTagName("select");
-    for (let item of userSelection){
-        item_id = item.id.replace("select-", "");
-        searchItems[item_id] = item.options[item.selectedIndex].value;
-    }
-    return searchItems;
-}
-
-function getData(fileName){
-    return fetch(fileName).then((data)=> data.json());
 }
