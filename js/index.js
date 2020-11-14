@@ -85,7 +85,8 @@ async function signIn() {
     }
 
     if(!user.userID){
-        document.getElementById("loginError").innerText = "Login Failed. Please try again.";
+        // console.log(user);
+        document.getElementById("loginError").innerText = user.error;
     } else {
         
         // setUser info to session

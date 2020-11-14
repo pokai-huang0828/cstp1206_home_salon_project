@@ -18,13 +18,13 @@ class SignInService{
         
         self::refreshLists();
 
-        $stdUser = new stdClass();
-
         foreach(self::$users as $user){
-
-            if($user->getEmail() == strtolower($email) && $user->getPassword() == $password){
-
+            
+            if(trim($user->getEmail()) == trim(strtolower($email)) && trim($user->getPassword()) == trim($password)){
+                
                 self::$user = $user;
+
+                $stdUser = new stdClass;
 
                 $stdUser->userID = self::$user->getUserID();
                 $stdUser->email = self::$user->getEmail();
@@ -33,9 +33,16 @@ class SignInService{
                 $stdUser->gender = self::$user->getGender();
                 $stdUser->phoneNumber = self::$user->getPhoneNumber();
                 $stdUser->role = self::$user->getRole();
-
+                
             }
+
         }
+
+        if(!isset($stdUser)){
+            $stdUser = new stdClass;
+            $stdUser->error = "Invalid email or password.";
+            return $stdUser;
+        } 
 
         return $stdUser;
 
