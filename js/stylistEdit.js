@@ -90,7 +90,8 @@ async function submitEdit(){
     password = document.getElementById("password").value;
     phoneNumber = document.getElementById("phoneNumber").value;
     email = document.getElementById("email").value;
-    gender = document.getElementById("male").value ? 
+
+    gender = document.getElementById("male").checked ? 
     document.getElementById("male").value : 
     document.getElementById("female").value ;
 
