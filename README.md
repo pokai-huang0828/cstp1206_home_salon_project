@@ -26,11 +26,11 @@ The following is a list of features to be implemented at project completion:
 
 3. To configure Apache server, open Xampp and click "Config" button in front of Apache. Then select "Apache (httpd.conf)". Add the following lines to the file and save the file. 
 
-`#Allow Apache to accept requests from all other domains.`
+    `#Allow Apache to accept requests from all other domains.`
 
-`Header set Access-Control-Allow-Origin "*"`
+    `Header set Access-Control-Allow-Origin "*"`
 
-`Header set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"`
+    `Header set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"`
 
 4. (Re)start the Apache Server
 
