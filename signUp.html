@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="en"> 
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,9 +27,8 @@
     <!-- Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-
     <link rel="stylesheet" href="css/index.css" />
-    <link rel="stylesheet" href="css/style-profile-list-details.css" />
+    <link rel="stylesheet" href="css/form.css" />
 
     <title>The Home Salon App</title>
   </head>
@@ -44,7 +43,7 @@
         <ul class="right hide-on-med-and-down">
 
             <!-- Display only when user is not signed in  -->
-            <li class="visitorOnly"><a href="index.html#signup"class="btn green darken-2">SignUp</a></li>
+            <li class="visitorOnly"><a href="#signup"class="btn green darken-2">SignUp</a></li>
             <li class="visitorOnly"><a href="#" class="btn black white-text loginToggle">Login</a></li>
 
             <!-- Display only when user is signed in -->
@@ -82,7 +81,7 @@
       <br>
 
       <div class="visitorOnly">
-        <li><a href="index.html#signup"class="btn green darken-2">SignUp</a></li>
+        <li><a href="#signup"class="btn green darken-2">SignUp</a></li>
         <li><a href="#" class="btn black white-text loginToggle">Login</a></li>
       </div>
 
@@ -94,116 +93,94 @@
 
   </ul>
 
-    <div class="error white-text bold black">
-      <span>Opps! This profile does not exist. Please try again.</span></br>
-      <button class="btn" onclick="goBack()"><i class="inline-icon material-icons">arrow_back</i>Back</button>
-    </div>
+  <!-- end of nav -->
 
+  <!-- Main Content -->
 
-    <div class="profile-details-container">
-      <div style="height: 80px;"></div>
-      <div class="row">
-        <div class="card container">
+  <div class="background">
+    
+    <div class="container black-text" style="height:100%;">
+    
+        <div style="height:55px"></div>
 
-          <div class="card-content black-text bold center">
-            <h4>Profile Details </h4>
-          </div>
-
-          <div class="card-tabs">
-            <ul class="tabs tabs-fixed-width">
-              <li class="tab"><a class="active" href="#profile">Profile</a></li>
-              <li class="tab"><a href="#portfolio">Portfolio</a></li>
-              <li class="tab"><a href="#contact">Contact</a></li>
-            </ul>
-          </div>
-
-          <div class="card-content lighten-4">
-
-            <div id="profile">
-              <div class="row">
-                <div class="profile-panel col s12 m4 center z-depth-1">
-                  <object width=150 data="img/defaultProfilePic.png" type="image/png">
-                  <img
-                    class="responsive-img circle"
-                    id="profile_pic"
-                    alt="profile-pic"
-                    width =100
-                  />
-                  </object>
-                  <h5 class="bold">Hi, My Name is <br><span id="name">Popo!</span></h5>
-                  <button class="btn disabled">BOOK ME!</button>
-                  <p>Member Since: <span id="signUpDate"></span></p>
-                  <p>Rating: <span id="rating"></span></p>
-                </div>
-
-                <div class="col s12 m8">
-                  <table class="profile-detail-table">
-                    <tbody>
-                      <tr>
-                        <td class="bold">Name</td>
-                        <td><span id="name_"></span></td>
-                      </tr>
-                      <tr>
-                        <td class="bold">Gender</td>
-                        <td><span id="gender"></span></td>
-                      </tr>
-                      <tr>
-                        <td class="bold">Professional Experience</td>
-                        <td><span id="professionalExperience"></span> year(s)</td>
-                      </tr>
-                      <tr>
-                        <td class="bold">Category</td>
-                        <td><span id="category"></span></td>
-                      </tr>
-                      <tr>
-                        <td class="bold">Service Location</td>
-                        <td><span id="serviceLocation"></span></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <div class="priceList center">
-                    <h5 class="bold">Pricing</h5>
-                    <div>
-                      <span id="pricing"></span>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-            <div id="portfolio">no portfolio yet</div>
+        <div class="formDiv">
             
-            <div id="contact">
-              <table class="profile-detail-table">
-                <tbody>
-                  <tr>
-                    <td class="bold">Email</td>
-                    <td><span id="email"></span></td>
-                  </tr>
-                  <tr>
-                    <td class="bold">Tel.</td>
-                    <td><span id="phoneNumber"></span></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+            <form action="" method="post">
+                <h2 class="bold">Sign Up</h2>
+                
+                <div id="error_msg" class="center red-text"></div>
 
-          </div>
+                <label for="firstName"><b>First Name</b></label>
+                <input type="text" name="firstName" id="firstName" required>
+                <br>
+        
+                <label for="lastName"><b>Last Name</b></label>
+                <input type="text" name="lastName" id="lastName" required>
+                <br>
+        
+                <label for="psw"><b>Password</b></label>
+                <input type="password" name="password" id="password" required>
+                <br>
+                
+                <label for="phoneNumber"><b>Phone Number</b></label>
+                <input type="text" name="phoneNumber" id="phoneNumber" required>
+                <br>
+
+                <label for="email"><b>Email</b></label>
+                <input type="text" name="email" id="email" required>
+                <br>
+    
+                <label for="gender"><b>Gender</b></label><br>
+                <input name="gender" id="gender" type="radio" value="" required/>
+                <p>
+                <label>
+                <input name="gender" type="radio" id="male" value="male" checked/>
+                <span>M</span>
+                </label>
+                </p>
+                <p>
+                <label>
+                <input name="gender" type="radio" id="female" value="female"/>
+                <span>F</span>
+                </label>
+                </p>
+                <p>
+     
+                <label for="role"><b>Please pick one of the following:</b></label><br>
+                <input name="role" id="role" type="radio" value="" checked/>
+                <p>
+                <label>
+                <input disabled="disabled" name="role" id="customer" type="radio" value="customer"/>
+                <span>I am a Customer.</span>
+                </label>
+                </p>
+                <p>
+                <label>
+                <input name="role" type="radio" id="stylist" value="stylist" checked/>
+                <span>I am a Stylist.</span>
+                </label>
+                </p>
+        
+                <div class="center section">
+                  <div class="btn" onclick="signUp()">Sign Up</div>
+                  <a href="index.html"><div type="button" class="cancel red btn">Cancel</div></a>
+                </div>         
+            </form>   
+
         </div>
-      </div>
-      
-      <div class="container backButton">
-        <button class="btn right" onclick="goBack()"><i class="inline-icon material-icons">arrow_back</i>Back</button>
-      </div>
-      
+    </div>
 
     </div>
 
+
+    <!-- End of Main Content -->
+
+
+  <!-- Footer -->
 
     <div>
       <p class="center">
-        <a href="#" class=" white-text">Back to top</a>
+        <a href="#" class="black-text">Back to top</a>
       </p>
     </div>
 
@@ -248,7 +225,7 @@
     </footer>
 
     <script src="js/index.js"></script>
-    <script src="js/profile-details.js"></script>
+    <script src="js/signUp.js"></script>
 
   </body>
 </html>

@@ -1,0 +1,7 @@
+POST http://localhost/inc/utilities/SignInController.php HTTP/1.1
+content-type: application/json
+
+{
+    "email": "pokai@email.com",
+    "password": "123"
+}

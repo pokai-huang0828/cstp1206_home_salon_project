@@ -2,7 +2,7 @@
 
 ## Description
 
-HOME SALON is a service-booking webapp intended to bring personalized styling services to customers. This project is to be completed in 5 iterations. 
+HOME SALON is a service-booking webapp intended to bring personalized styling services to customers. This project is to be completed in 4 iterations. 
 
 The following is a list of features to be implemented at project completion:
 
@@ -10,27 +10,37 @@ The following is a list of features to be implemented at project completion:
 - [ ] Customers can book for styling services
 - [x] Customers can search for stylists by category
 - [ ] Customers can review business service
-- [ ] Stylists can edit their business profiles
+- [x] Stylists can edit their business profiles
 - [ ] Stylists can manage service bookings
 - [ ] Both Customers and Stylists can file reports to Web-Admin
-- [ ] Web-Admin can manage all users
-- [ ] Web-Admin can manage filed reports
 
 ## Installation
 
-* Git clone the Home Salon Webapp Project:
+1. Git clone the Home Salon Webapp Project:
 
     `git clone https://github.com/pokai-huang0828/cstp1206_home_salon_project.git`
 
-* Open the cloned project using VScode.
+2. Backup and clear out the current files in `C:\xampp\htdocs` and add the project code to the folder.
 
-* Download a Live Server Extension in VScode.
+3. To configure Apache server, open Xampp and click "Config" button in front of Apache. Then select "Apache (httpd.conf)". Add the following lines to the file and save the file. 
 
-* Serve index.html in the root directory with the live server. 
+    `#Allow Apache to accept requests from all other domains.`
+
+    `Header set Access-Control-Allow-Origin "*"`
+
+    `Header set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"`
+
+4. (Re)start the Apache Server
+
+5. Cloned the home-salon project and place the content of the project into `C:\xampp\htdocs`.
+
+6. Download a Live Server Extension in VScode.
+
+7. Serve index.html in the root directory with the live server. 
 
 ## Current Project Status
 
-Iteration 1
+Iteration 2
 
 ## Authors
 

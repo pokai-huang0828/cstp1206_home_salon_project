@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     let id = getParamID();
 
     // get data from database
-    fileName = '../data/stylist_user.data.json';
+    fileName = 'http://localhost/inc/utilities/StylistController.php';
     let data = await getData(fileName);
 
     if(!data){
@@ -12,8 +12,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     } else {
         // find the correct data
         profile = findProfileByID(data, id);
-        
-        console.log(profile);
+
         // display data
         if(!profile){
             displayError();
@@ -24,17 +23,13 @@ document.addEventListener('DOMContentLoaded', async function() {
 
 });
 
-function goBack(){
-    window.history.back();
+function getData(fileName){
+    return fetch(fileName).then((data)=> data.json()); 
 }
 
 function getParamID(){
     let params = new URLSearchParams(document.location.search.substring(1));
     return params.get("id");
-}
-
-function getData(fileName){
-    return fetch(fileName).then((data)=> data.json());
 }
 
 function findProfileByID(data, id){
@@ -47,29 +42,21 @@ function displayError(){
     document.getElementsByClassName("error")[0].style.display = "block";
 };
 
-function displayProfile(){
+function displayProfile(profile){
     document.getElementById("profile_pic").src = profile.profilePic;
-        
     document.getElementById("name").innerText = `${profile.firstName} ${profile.lastName}`;
     document.getElementById("signUpDate").innerText = profile.signUpDate;
     document.getElementById("rating").innerText = profile.rating;
     document.getElementById("name_").innerText = `${profile.firstName} ${profile.lastName}`;
     document.getElementById("gender").innerText = profile.gender;
     document.getElementById("professionalExperience").innerText = profile.professionalExperience;
-    
-    const reducer = (accumulator, currentValue) => accumulator + ' '+ currentValue;
-    categories_str = profile.category.reduce(reducer);
-    document.getElementById("category").innerText = categories_str;
-    
+    document.getElementById("category").innerText = profile.category;
     document.getElementById("serviceLocation").innerText = profile.serviceLocation;
-    
-    pricing_str = "";
-    p_obj = profile.priceList;
-    for(let item in p_obj){
-        pricing_str += `${item} - ${p_obj[item]}\n`;
-    }
-    document.getElementById("pricing").innerText = pricing_str;
-
+    document.getElementById("pricing").innerText = profile.priceList;
     document.getElementById("email").innerText = profile.email;
     document.getElementById("phoneNumber").innerText = profile.phoneNumber;
 };
+
+function goBack(){
+    window.history.back();
+}
