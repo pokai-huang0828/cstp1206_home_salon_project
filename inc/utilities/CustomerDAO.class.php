@@ -93,9 +93,8 @@ class CustomerDAO {
         self::$_db->bind(":address", $profile->address);
 
         try{
-            $result = self::$_db->execute();
-            // echo self::$_db->rowCount();
-            return $result;
+            self::$_db->execute();
+            return $profile;
 
         } catch(PDOException $e){
             return self::returnError($e);
