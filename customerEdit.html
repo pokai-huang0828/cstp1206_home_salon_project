@@ -1,0 +1,207 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Compiled and minified CSS -->
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+/>
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<!-- Materialize Icons -->
+<link
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet"
+/>
+
+<!-- Google fonts -->
+<link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,700&display=swap"
+    rel="stylesheet"
+/>
+
+<!-- Jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="css/index.css" />
+<link rel="stylesheet" href="css/form.css" />
+
+<title>The Home Salon App</title>
+</head>
+
+<body class="profile-detail-page">
+
+    <!-- Nav -->
+
+    <nav class="navbar-fixed transparent z-depth-1">
+        <div class="nav-wrapper container">
+        <a href="index.html" class="brand-logo"><img src="img/Logo4.png" height = 60 width = 160></a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+
+            <li><span class="badge white-text welcomeTag" style="margin-top:20px;"}></span></li>
+            <li><a href="#" class="btn red white-text" onclick="signOut()">Logout</a></li>
+        </ul>
+        </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+        <br>
+        <br>
+        <br>
+
+        <li><span class="black-text welcomeTag" style="margin-left:31px;"></span></li>
+        <li><a href="#" class="btn red white-text" onclick="signOut()">Logout</a></li>
+    </ul>
+
+    <!-- end of nav -->
+
+    <!-- Main Content -->
+
+    <div class="background">
+
+    <div class="container black-text" style="height:100%;">
+
+        <div style="height:55px"></div>
+
+        <div class="formDiv" id="stylistEditNotFoundError"><p>Sorry, we cannot find your profile. Please Try again later</p></div>
+
+        <div class="formDiv" id="stylistEditForm">
+            
+            <form>
+
+                <h2 class="bold">Customer Edit</h2>
+                <hr>
+
+                <!-- Basic Info Edit -->
+                <h5><i class="material-icons">face</i> Basic Info</h5>
+
+                <!-- Display errors if any -->
+                <div class="center red-text" id="inputErrorDiv"></div>
+
+                <!-- First Name -->
+                <label for="firstName"><b>First Name</b></label>
+                <input type="text" name="firstName" id="firstName" required>
+                <br>
+        
+                <!-- Last Name -->
+                <label for="lastName"><b>Last Name</b></label>
+                <input type="text" name="lastName" id="lastName" required>
+                <br>
+        
+                <!-- Password -->
+                <label for="psw"><b>Password</b></label>
+                <input type="password" name="password" id="password" required>
+                <br>
+                
+                <!-- Phone Number -->
+                <label for="phoneNumber"><b>Phone Number</b></label>
+                <input type="text" name="phoneNumber" id="phoneNumber" required>
+                <br>
+
+                <!-- Email -->
+                <label for="email"><b>Email</b></label>
+                <input type="email" name="email" id="email" required>
+                <br>
+
+                <!-- Address Number -->
+                <label for="address"><b>Address</b></label>
+                <input type="text" name="address" id="address" required>
+                <br>
+
+                <!-- Gender -->
+                <label for="gender"><b>Gender</b></label><br>
+                <input name="gender" id="gender" type="radio" value="" required/>
+                <p>
+                <label>
+                <input name="gender" type="radio" id="male" value="male"/>
+                <span>M</span>
+                </label>
+                </p>
+                <p>
+                <label>
+                <input name="gender" type="radio" id="female" value="female"/>
+                <span>F</span>
+                </label>
+                </p>
+                <p>
+
+                <!-- Profile Pic -->
+                <label for="profilePic">Profile Picture Url:</label>
+                <input class="urlInput" type="url" id="profilePic">
+                <br>
+
+                <!-- Submit Buttons -->
+                <div class="center section">
+                    <div class="btn" onclick="submitEdit()">Done</div>
+                    <a href="index.html"><div type="button" class="cancel red btn">Back to Home</div></a>
+                </div>     
+
+            </form>   
+
+        </div>
+    </div>
+
+    </div>
+
+    <!-- End of Main Content -->
+
+
+    <!-- Footer -->
+
+    <div>
+        <p class="center">
+        <a href="#" class="black-text">Back to top</a>
+        </p>
+    </div>
+
+    <footer class="page-footer">
+        <div class="container black-text">
+            <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text ">Contact Us</h5>
+                <p class="white-text text-lighten-4">We enjoy getting feedback from our clients and potential clients. If you have any query or want to know more,</p>
+                <p class="white-text text-lighten-4">Send us an email at: <a href="mailto:info@homesalon.com">info@homesalon.com</a></p>
+                <p class="white-text text-lighten-4">Or call: +1 987-654-3210</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Follow Us On</h5>
+                <tr>
+                <td width="48">
+                    <a href="https://www.facebook.com/" target="new" onmouseover = "M_swapImage('Facebook','','http://03e.bb3.myftpupload.com/wp-content/uploads/2014/01/facebook.png',1)" onmouseout="MM_swapImgRestore()">
+                    <img src="img/facebook.png" alt="Follow us on Facebook" width="48" height="48" id="Facebook">
+                    </a>
+                </td>
+                &nbsp;&nbsp;&nbsp;
+                <td width="48">
+                    <a href="https://instagram.com/" target="new" onmouseover="MM_swapImage('Instagram','','http://03e.bb3.myftpupload.com/wp-content/uploads/2014/01/instagram.png',1)" onmouseout="MM_swapImgRestore()">
+                    <img src="img/instagram.png" alt="Follow Us On Instagram" width="48" height="48" id="Instagram">
+                    </a>
+                </td>
+                &nbsp;&nbsp;&nbsp;
+                <td width="48">
+                    <a href="https://twitter.com/" target="new" onmouseover="MM_swapImage('Twitter','','http://03e.bb3.myftpupload.com/wp-content/uploads/2014/01/twitter.jpg',1)" onmouseout="MM_swapImgRestore()">
+                    <img src="img/twitter.png" alt="Follow Us on Twitter" width="48" height="48" id="Twitter">
+                    </a>
+                </td>
+                </tr>
+            </div>
+            </div>
+        </div>
+        <div class="footer-copyright black">
+            <div class="container center white-text">
+            © 2020 Home Salon and TheSuperFancyTeam
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/index.js"></script>
+    <script src="js/customerEdit.js"></script>
+
+</body>
+
+</html>
