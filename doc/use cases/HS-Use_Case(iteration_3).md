@@ -12,8 +12,6 @@
 
 ## Flows of Events for Individual Use Cases
 
-
-
 ---
 
 ### Customer Registration Use Case
