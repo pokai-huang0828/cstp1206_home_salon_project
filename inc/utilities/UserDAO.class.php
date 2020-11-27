@@ -1,6 +1,6 @@
 <?php 
 
-class UserDAO {
+class UserDAO{
 
     private static $_db; 
 
