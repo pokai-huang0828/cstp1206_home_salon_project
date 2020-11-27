@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS HomeSalonApp_Practice;
-CREATE DATABASE HomeSalonApp_Practice;
+DROP DATABASE IF EXISTS HomeSalonApp;
+CREATE DATABASE HomeSalonApp;
 
-USE HomeSalonApp_Practice;
+USE HomeSalonApp;
 
 CREATE TABLE Users (
     userID INT AUTO_INCREMENT PRIMARY KEY,
