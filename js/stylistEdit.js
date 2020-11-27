@@ -132,7 +132,8 @@ async function submitEdit(){
         category,
         serviceLocation,
         priceList,
-        portfolio
+        portfolio,
+        role: "stylist"
     }
 
     // console.log(profile_info);
@@ -145,9 +146,23 @@ async function submitEdit(){
     result = await fetch('http://localhost/inc/utilities/StylistController.php', {
         method: 'PUT',
         body: profile_info_str
-    }).then(res => res.json());
+    }).then(res => res.json()); 
+
+    setUserToSession(result);
     
     // return user to main page
     window.location.href = "index.html";
+}
+
+function setUserToSession(user){
+    
+    sessionStorage.setItem("userID", user.userID);
+    sessionStorage.setItem("email", user.email);
+    sessionStorage.setItem("firstName", user.firstName);
+    sessionStorage.setItem("lastName", user.lastName);
+    sessionStorage.setItem("phoneNumber", user.phoneNumber);
+    sessionStorage.setItem("role", user.role);
+    sessionStorage.setItem("address", user.address);
+
 }
 

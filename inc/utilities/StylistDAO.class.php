@@ -1,216 +1,261 @@
-<?php 
+<?php  
 
-class StylistDAO {
+class StylistDAO { 
 
-    // List of Stylists
-    private static $stylists = array();
-    private static $users = array();
-    
-    // Merging Stylist and User
-    private static $mergedList = array();
-    
-    // Make a function to get an updated list of stylist from the CSV file
-    static function refreshStylists(){
-        
-        $stylist_data_path = realpath("../../data/stylist.data.csv");
-        $user_data_path = realpath("../../data/user.data.csv");
+    private static $_db;
 
-        $stylist_content = FileService::readfile($stylist_data_path);
-        self::$stylists = StylistParser::parseStylists($stylist_content);
-
-        $user_content = FileService::readfile($user_data_path);
-        self::$users = UserParser::parseUser($user_content);
-
-        // merging stylist_obj and user_obj into a std_obj
-        for($i=0; $i < count(self::$stylists); $i++){
-
-            $merged_obj = new stdClass;
-
-            // Stylist Info
-            $merged_obj->userID = self::$stylists[$i]->getUserID();
-            $merged_obj->professionalExperience = self::$stylists[$i]->getProfessionalExperience();
-            $merged_obj->rating = self::$stylists[$i]->getRating();
-            $merged_obj->serviceLocation = self::$stylists[$i]->getServiceLocation();
-            $merged_obj->category = self::$stylists[$i]->getCategory();
-            $merged_obj->priceList = self::$stylists[$i]->getPriceList();
-            $merged_obj->portfolio = self::$stylists[$i]->getPortfolio();
-
-            // User Info
-            $merged_obj->password = self::$users[$i]->getPassword();
-            $merged_obj->lastName = self::$users[$i]->getLastName();
-            $merged_obj->firstName = self::$users[$i]->getFirstName();
-            $merged_obj->role = self::$users[$i]->getRole();
-            $merged_obj->gender = self::$users[$i]->getGender();
-            $merged_obj->phoneNumber = self::$users[$i]->getPhoneNumber();
-            $merged_obj->email = self::$users[$i]->getEmail();
-            $merged_obj->signUpDate = self::$users[$i]->getSignUpDate();
-            $merged_obj->profilePic = self::$users[$i]->getProfilePic();
-
-            self::$mergedList[] = $merged_obj;
-
-        }
-        
+    public static function init(){
+        self::$_db = new PDOService("Stylist");
     }
-
+    
     public static function getStylists(){
 
-        self::refreshStylists();
+        $sql = "SELECT * FROM users
+                JOIN stylists USING(userID);";
 
-        return StylistDAO::$mergedList;
+        //Query
+        self::$_db->query($sql);
+
+        //Exec
+        self::$_db->execute();
+
+        // Results
+        $results = self::$_db->resultSet();
+
+        // Return 
+        return self::convertStylistsToStdClass($results);
 
     }
     
     public static function getStylistById($id){
-        
-        self::refreshStylists();
-        
-        foreach(self::$mergedList as $merged_obj){
 
-            if($merged_obj->userID == $id){
-                return $merged_obj;
+        $sql = "SELECT * From users
+                JOIN stylists USING(userID)
+                WHERE userID = :id";
+
+        self::$_db->query($sql);
+        self::$_db->bind(":id", $id);
+
+        try{
+
+            self::$_db->execute();
+            $result = self::$_db->singleResult();
+
+            if($result){
+                return self::convertStylistsToStdClass($result);
+            }else {
+                $error = new stdClass;
+                $error->error = "No stylist with this id.";
+                return $error;
             }
-            
+
+        }catch (Exception $e){
+            return self::returnError($e);
         }
 
     }
 
     public static function updateStylists($profile){
 
-        StylistDAO::refreshStylists();
+        $sql = "
+        START TRANSACTION;
 
-        // Modifying stylist data
-        foreach(StylistDAO::$stylists as $stylist){
-            if($stylist->getUserID() == $profile->userID){
-                foreach($profile as $prop => $value){
-                    if(property_exists($stylist, $prop)){
-                        self::setStylistProperty($stylist, $prop, $value);
-                    }
-                }
-            }
-        }
+        UPDATE stylists
+        SET 
+        professionalExperience = :professionalExperience,
+        rating = :rating,
+        serviceLocation = :serviceLocation,
+        category = :category,
+        priceList = :priceList,
+        portfolio = :portfolio
+        WHERE userID = :userID;
 
-        // Modifying user data
-        foreach(StylistDAO::$users as $user){
-            if($user->getUserID() == $profile->userID){
-                foreach($profile as $prop => $value){
-                    if(property_exists($user, $prop)){
-                        self::setUserProperty($user, $prop, $value);
-                    }
-                }
-            }
-        }
+        UPDATE users
+        SET
+        password = :password,
+        role = :role,
+        firstName = :firstName,
+        lastName = :lastName,
+        profilePic = :profilePic,
+        gender = :gender,
+        phoneNumber = :phoneNumber,
+        email = :email
+        WHERE userID = :userID;
 
-        // convert each stylist into string
-        $stylist_str = "userID,professionalExperience,rating,serviceLocation,category,priceList,portfolio";
+        COMMIT;";
 
-        foreach(StylistDAO::$stylists as $s){
-            $stylist_str .= "\n".
-            $s->getUserID().",".
-            $s->getProfessionalExperience().",".
-            $s->getRating().",".
-            $s->getServiceLocation().",".
-            $s->getCategory().",".
-            $s->getPriceList().",".
-            $s->getPortfolio();
-        }
+        self::$_db->query($sql);
 
-        // convert each user into string
-        $user_str = "userID,password,role,firstName,lastName,profilePic,signUpDate,gender,phoneNumber,email";
+        self::$_db->bind(":userID", $profile->userID);
+        self::$_db->bind(":firstName", $profile->firstName);
+        self::$_db->bind(":lastName", $profile->lastName);
+        self::$_db->bind(":password", $profile->password);
+        self::$_db->bind(":phoneNumber", $profile->phoneNumber);
+        self::$_db->bind(":email", $profile->email);
+        self::$_db->bind(":gender", $profile->gender);
+        self::$_db->bind(":profilePic", $profile->profilePic);
 
-        foreach(StylistDAO::$users as $u){
-            $user_str .= "\n".
-            $u->getUserID().",".
-            $u->getPassword().",".
-            $u->getRole().",".
-            $u->getFirstName().",".
-            $u->getLastName().",".
-            $u->getProfilePic().",".
-            $u->getSignUpDate().",".
-            $u->getGender().",".
-            $u->getPhoneNumber().",".
-            $u->getEmail();
-        }
+        self::$_db->bind(":professionalExperience", $profile->professionalExperience);
+        self::$_db->bind(":rating", 5);
+        self::$_db->bind(":category", $profile->category);
+        self::$_db->bind(":serviceLocation", $profile->serviceLocation);
+        self::$_db->bind(":priceList", $profile->priceList);
+        self::$_db->bind(":portfolio", $profile->portfolio);
+        self::$_db->bind(":role", $profile->role);
 
-        // paths to the csv files
-        $stylist_data_path = realpath("../../data/stylist.data.csv");
-        $user_data_path = realpath("../../data/user.data.csv");
-        
-        // save them in file
-        FileService::writeFile($stylist_data_path, $stylist_str);
-        FileService::writeFile($user_data_path, $user_str);
+        try{
+            self::$_db->execute();
+            return $profile;
 
-        return $profile;
-    }
-
-    private static function setStylistProperty(&$stylist, $property, $value){
-        
-        switch ($property){
-
-            case "userID":
-                $stylist->setUserID($value);
-            break;
-            case "professionalExperience":
-                $stylist->setProfessionalExperience($value);
-            break;
-            case "userID":
-                $stylist->setUserID($value);
-            break;
-            case "rating":
-                $stylist->setRating($value);
-            break;
-            case "serviceLocation":
-                $stylist->setServiceLocation($value);
-            break;
-            case "category":
-                $stylist->setCategory($value);
-            break;
-            case "priceList":
-                $stylist->setPriceList($value);
-            break;
-            case "portfolio":
-                $stylist->setPortfolio($value);
-            break;
-
+        } catch(PDOException $e){
+            return self::returnError($e);
         }
 
     }
 
-    private static function setUserProperty(&$user, $property, $value){
+    public static function addStylist($user){
 
-        switch ($property){
+        // first add record to user, then retrive id
+        $sql = "
+        INSERT INTO users
+        (password, role, firstName, lastName, 
+         signUpDate, gender, 
+        phoneNumber, email)
+        VALUES
+        (:password, :role, :firstName, :lastName, 
+        :signUpDate, :gender, 
+        :phoneNumber, :email);
+        ";
 
-            case "userID":
-                $user->setUserID($value);
-            break;
-            case "password":
-                $user->setPassword($value);
-            break;
-            case "role":
-                $user->setRole($value);
-            break;
-            case "firstName":
-                $user->setFirstName($value);
-            break;
-            case "lastName":
-                $user->setLastName($value);
-            break;
-            case "profilePic":
-                $user->setProfilePic($value);
-            break;
-            case "signUpDate":
-                $user->setSignUpDate($value);
-            break;
-            case "gender":
-                $user->setGender($value);
-            break;
-            case "phoneNumber":
-                $user->setPhoneNumber($value);
-            break;
-            case "email":
-                $user->setEmail($value);
-            break;
+        self::$_db->query($sql);
+
+        self::$_db->bind(":password", $user->getPassword());
+        self::$_db->bind(":role", $user->getRole());
+        self::$_db->bind(":firstName", $user->getFirstName());
+        self::$_db->bind(":lastName", $user->getLastName());
+        // self::$_db->bind(":profilePic", " ");
+        self::$_db->bind(":signUpDate", $user->getSignUpDate());
+        self::$_db->bind(":gender", $user->getGender());
+        self::$_db->bind(":phoneNumber", $user->getPhoneNumber());
+        self::$_db->bind(":email", $user->getEmail());
+
+        try{
+
+            self::$_db->execute();
+
+            // return userID 
+            $userID = self::$_db->lastInsertKey();
+
+            // create stylist record
+            $sql = 'INSERT INTO stylists(userID) 
+                    values (:userID);';
+
+            self::$_db->query($sql);
+
+            self::$_db->bind(":userID", $userID);
+
+            self::$_db->execute();
+
+            // set the userID the user obj and return 
+            $user->setUserID($userID);
+
+            // var_dump($user);
+
+            return self::convertUserToStdClass($user);
+
+        } catch (Exception $e){
+            if($e->getCode() == '23000') {
+                $error = new stdClass;
+                $error->error = "This email has been registered.";
+                return $error;
+            } else{
+                return self::returnError($e);
+            }
         }
 
+    }
+
+    private static function convertStylistsToStdClass($results){
+
+        if(is_array($results)){
+            $std_stylists = array();
+
+            foreach($results as $stylist){
+                $s = new StdClass;
+    
+                self::copyStylistPropertiesOver($stylist, $s);
+    
+                $std_stylists[] = $s;
+            }
+
+            return $std_stylists;
+
+        } else{
+
+            $s = new StdClass;
+            self::copyStylistPropertiesOver($results, $s);
+            return $s;
+
+        }
+
+    }
+
+    private static function copyStylistPropertiesOver($stylist, $std_stylist){
+        
+        // User info
+        $std_stylist->userID = $stylist->getUserID();
+        $std_stylist->password = $stylist->getPassword();
+        $std_stylist->role = $stylist->getRole();
+        $std_stylist->firstName = $stylist->getFirstName();
+        $std_stylist->lastName = $stylist->getLastName();
+        $std_stylist->profilePic = $stylist->getProfilePic();
+        $std_stylist->signUpDate = $stylist->getSignUpDate();
+        $std_stylist->gender = $stylist->getGender();
+        $std_stylist->phoneNumber = $stylist->getPhoneNumber();
+        $std_stylist->email = $stylist->getEmail();
+
+        // Stylists info
+        $std_stylist->professionalExperience = $stylist->getProfessionalExperience();
+        $std_stylist->rating = $stylist->getRating();
+        $std_stylist->serviceLocation = $stylist->getServiceLocation();
+        $std_stylist->category = $stylist->getCategory();
+        $std_stylist->priceList = $stylist->getPriceList();
+        $std_stylist->portfolio = $stylist->getPortfolio();
+
+    }
+
+    // User convert StdUser
+
+    private static function convertUserToStdClass($result){
+
+        $s = new StdClass;
+        $s = self::copyUserPropertiesOver($result, $s);
+        return $s;
+
+    }
+
+    private static function copyUserPropertiesOver($user, $std_user){
+        
+        // User info
+        $std_user->userID = $user->getUserID();
+        $std_user->password = $user->getPassword();
+        $std_user->role = $user->getRole();
+        $std_user->firstName = $user->getFirstName();
+        $std_user->lastName = $user->getLastName();
+        // $std_user->profilePic = $user->getProfilePic();
+        $std_user->signUpDate = $user->getSignUpDate();
+        $std_user->gender = $user->getGender();
+        $std_user->phoneNumber = $user->getPhoneNumber();
+        $std_user->email = $user->getEmail();
+
+        return $std_user;
+
+    }
+
+    private static function returnError($e){
+        $error = new stdClass;
+        $error->error = $e->getMessage();
+        return $error;
     }
 
 

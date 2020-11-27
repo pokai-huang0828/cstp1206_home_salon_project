@@ -2,9 +2,9 @@
 
 require_once("User.class.php");
 
-class Stylist{
+class Stylist extends User{
 
-    private string $userID;
+    protected string $userID;
     private int $professionalExperience;
     private float $rating;
     private string $serviceLocation;
@@ -12,23 +12,23 @@ class Stylist{
     private string $priceList;
     private string $portfolio;
 
-    function __construct(
-        string $aUserID = "", 
-        int $aProfessionalExperience = 0,
-        float $aRating = 0,
-        string $aServiceLocation = "",
-        string $aCategory = "", 
-        string $aPriceList = "",
-        string $aPortfolio = ""
-    ){
-        $this->userID = $aUserID;
-        $this->professionalExperience = $aProfessionalExperience;
-        $this->rating = $aRating;
-        $this->serviceLocation = $aServiceLocation;
-        $this->category = $aCategory;
-        $this->priceList = $aPriceList;
-        $this->portfolio = $aPortfolio;
-    }
+    // function Stylist(
+    //     string $aUserID = "", 
+    //     int $aProfessionalExperience = 0,
+    //     float $aRating = 0,
+    //     string $aServiceLocation = "",
+    //     string $aCategory = "", 
+    //     string $aPriceList = "",
+    //     string $aPortfolio = ""
+    // ){
+    //     $this->userID = $aUserID;
+    //     $this->professionalExperience = $aProfessionalExperience;
+    //     $this->rating = $aRating;
+    //     $this->serviceLocation = $aServiceLocation;
+    //     $this->category = $aCategory;
+    //     $this->priceList = $aPriceList;
+    //     $this->portfolio = $aPortfolio;
+    // }
 
     // Getters
 
