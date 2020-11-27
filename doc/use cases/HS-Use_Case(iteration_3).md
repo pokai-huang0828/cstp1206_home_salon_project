@@ -6,11 +6,13 @@
 ## Use Caes: **Iteration 3**
 
 ---
-
+![Use Case Iteration 3](doc/use%case/../../Home%20Salon%20Use%20Case(Iteration3).png)
 
 ---
 
 ## Flows of Events for Individual Use Cases
+
+
 
 ---
 
