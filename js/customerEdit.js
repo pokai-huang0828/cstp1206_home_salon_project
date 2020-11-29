@@ -28,40 +28,12 @@ function fillUpForm(profile){
     document.getElementById("phoneNumber").value = profile.phoneNumber;
     document.getElementById("email").value = profile.email;
     document.getElementById("profilePic").value = profile.profilePic;
+    document.getElementById("address").value = profile.address;
     
     // pre-check gender
     profile.gender == "male" ? 
     document.getElementById("male").checked = true : 
     document.getElementById("female").checked = true;
-    
-    document.getElementById("professionalExperience").value = profile.professionalExperience;
-    document.getElementById("priceList").value = profile.priceList;
-    document.getElementById("portfolio").value = profile.portfolio;
-
-    switch (profile.serviceLocation) {
-        case 'serviceLocationDefault':
-            document.getElementById("serviceLocationDefaulter").selected = true;
-            break;
-        case 'vancouver':
-            document.getElementById("vancouver").selected = true;
-            break;
-        case 'burnaby':
-            document.getElementById("burnaby").selected = true;
-            break;
-        case 'richmond':
-            document.getElementById("richmond").selected = true;
-            break;
-        case 'surrey':
-            document.getElementById("surrey").selected = true;
-    }
-
-    switch (profile.category) {
-        case 'hair':
-            document.getElementById("hair").selected = true;
-            break;
-        case 'makeup':
-            document.getElementById("makeup").selected = true;
-    }
 
 }
 
@@ -70,7 +42,7 @@ async function getProfileByID(userID){
     let queryparam = new URLSearchParams({userID});
 
     try{
-        let response = await fetch("http://localhost/inc/utilities/StylistController.php?" + queryparam);
+        let response = await fetch("http://localhost/inc/utilities/CustomerController.php?" + queryparam);
         return response.json();
 
     }catch(err){
@@ -90,18 +62,14 @@ async function submitEdit(){
     password = document.getElementById("password").value;
     phoneNumber = document.getElementById("phoneNumber").value;
     email = document.getElementById("email").value;
-
+    profilePic = document.getElementById("profilePic").value;
+    
     gender = document.getElementById("male").checked ? 
     document.getElementById("male").value : 
     document.getElementById("female").value ;
-
+    
     // Non-required fields
-    profilePic = document.getElementById("profilePic").value;
-    priceList = document.getElementById("priceList").value;
-    portfolio = document.getElementById("portfolio").value;
-    professionalExperience = document.getElementById("professionalExperience").value;
-    category = document.getElementById("category").value;
-    serviceLocation = document.getElementById("serviceLocation").value;
+    address = document.getElementById("address").value;
 
     // check for empty inputs that are required
     if (
@@ -127,13 +95,9 @@ async function submitEdit(){
         phoneNumber,
         email,
         gender,
+        address,
         profilePic,
-        professionalExperience,
-        category,
-        serviceLocation,
-        priceList,
-        portfolio,
-        role: "stylist"
+        role: "customer"
     }
 
     // console.log(profile_info);
@@ -143,13 +107,13 @@ async function submitEdit(){
     // console.log(profile_info_str);
     
     // Send PUT request to server to save the data
-    result = await fetch('http://localhost/inc/utilities/StylistController.php', {
+    result = await fetch('http://localhost/inc/utilities/CustomerController.php', {
         method: 'PUT',
         body: profile_info_str
-    }).then(res => res.json()); 
-
-    setUserToSession(result);
+    }).then(res => res.json());
     
+    setUserToSession(result);
+
     // return user to main page
     window.location.href = "index.html";
 }
@@ -165,5 +129,4 @@ function setUserToSession(user){
     sessionStorage.setItem("address", user.address);
 
 }
-
 

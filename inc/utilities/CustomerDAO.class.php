@@ -1,17 +1,17 @@
 <?php  
 
-class StylistDAO { 
+class CustomerDAO {
 
     private static $_db;
 
     public static function init(){
-        self::$_db = new PDOService("Stylist");
+        self::$_db = new PDOService("Customer");
     }
     
-    public static function getStylists(){
+    public static function getCustomers(){
 
         $sql = "SELECT * FROM users
-                JOIN stylists USING(userID);";
+                JOIN customers USING(userID);";
 
         //Query
         self::$_db->query($sql);
@@ -23,14 +23,14 @@ class StylistDAO {
         $results = self::$_db->resultSet();
 
         // Return 
-        return self::convertStylistsToStdClass($results);
+        return self::convertCustomersToStdClass($results);
 
     }
     
-    public static function getStylistById($id){
+    public static function getCustomerById($id){
 
         $sql = "SELECT * From users
-                JOIN stylists USING(userID)
+                JOIN customers USING(userID)
                 WHERE userID = :id";
 
         self::$_db->query($sql);
@@ -42,10 +42,10 @@ class StylistDAO {
             $result = self::$_db->singleResult();
 
             if($result){
-                return self::convertStylistsToStdClass($result);
+                return self::convertCustomersToStdClass($result);
             }else {
                 $error = new stdClass;
-                $error->error = "No stylist with this id.";
+                $error->error = "No customer with this id.";
                 return $error;
             }
 
@@ -53,27 +53,22 @@ class StylistDAO {
             return self::returnError($e);
         }
 
+
     }
 
-    public static function updateStylists($profile){
+    public static function updateCustomer($profile){
 
         $sql = "
         START TRANSACTION;
 
-        UPDATE stylists
+        UPDATE customers
         SET 
-        professionalExperience = :professionalExperience,
-        rating = :rating,
-        serviceLocation = :serviceLocation,
-        category = :category,
-        priceList = :priceList,
-        portfolio = :portfolio
+        address = :address
         WHERE userID = :userID;
 
         UPDATE users
         SET
         password = :password,
-        role = :role,
         firstName = :firstName,
         lastName = :lastName,
         profilePic = :profilePic,
@@ -95,16 +90,11 @@ class StylistDAO {
         self::$_db->bind(":gender", $profile->gender);
         self::$_db->bind(":profilePic", $profile->profilePic);
 
-        self::$_db->bind(":professionalExperience", $profile->professionalExperience);
-        self::$_db->bind(":rating", 5);
-        self::$_db->bind(":category", $profile->category);
-        self::$_db->bind(":serviceLocation", $profile->serviceLocation);
-        self::$_db->bind(":priceList", $profile->priceList);
-        self::$_db->bind(":portfolio", $profile->portfolio);
-        self::$_db->bind(":role", $profile->role);
+        self::$_db->bind(":address", $profile->address);
 
         try{
-            self::$_db->execute();
+            $result = self::$_db->execute();
+            // echo self::$_db->rowCount();
             return $profile;
 
         } catch(PDOException $e){
@@ -113,7 +103,7 @@ class StylistDAO {
 
     }
 
-    public static function addStylist($user){
+    public static function addCustomer($user){
 
         // first add record to user, then retrive id
         $sql = "
@@ -147,7 +137,7 @@ class StylistDAO {
             $userID = self::$_db->lastInsertKey();
 
             // create stylist record
-            $sql = 'INSERT INTO stylists(userID) 
+            $sql = 'INSERT INTO customers(userID) 
                     values (:userID);';
 
             self::$_db->query($sql);
@@ -175,52 +165,47 @@ class StylistDAO {
 
     }
 
-    private static function convertStylistsToStdClass($results){
+    private static function convertCustomersToStdClass($results){
 
         if(is_array($results)){
-            $std_stylists = array();
+            $std_customers = array();
 
-            foreach($results as $stylist){
+            foreach($results as $customer){
                 $s = new StdClass;
     
-                self::copyStylistPropertiesOver($stylist, $s);
+                self::copyCustomerPropertiesOver($customer, $s);
     
-                $std_stylists[] = $s;
+                $std_customers[] = $s;
             }
 
-            return $std_stylists;
+            return $std_customers;
 
         } else{
 
             $s = new StdClass;
-            self::copyStylistPropertiesOver($results, $s);
+            self::copyCustomerPropertiesOver($results, $s);
             return $s;
 
         }
 
     }
 
-    private static function copyStylistPropertiesOver($stylist, $std_stylist){
+    private static function copyCustomerPropertiesOver($customer, $std_customer){
         
         // User info
-        $std_stylist->userID = $stylist->getUserID();
-        $std_stylist->password = $stylist->getPassword();
-        $std_stylist->role = $stylist->getRole();
-        $std_stylist->firstName = $stylist->getFirstName();
-        $std_stylist->lastName = $stylist->getLastName();
-        $std_stylist->profilePic = $stylist->getProfilePic();
-        $std_stylist->signUpDate = $stylist->getSignUpDate();
-        $std_stylist->gender = $stylist->getGender();
-        $std_stylist->phoneNumber = $stylist->getPhoneNumber();
-        $std_stylist->email = $stylist->getEmail();
+        $std_customer->userID = $customer->getUserID();
+        $std_customer->password = $customer->getPassword();
+        $std_customer->role = $customer->getRole();
+        $std_customer->firstName = $customer->getFirstName();
+        $std_customer->lastName = $customer->getLastName();
+        $std_customer->profilePic = $customer->getProfilePic();
+        $std_customer->signUpDate = $customer->getSignUpDate();
+        $std_customer->gender = $customer->getGender();
+        $std_customer->phoneNumber = $customer->getPhoneNumber();
+        $std_customer->email = $customer->getEmail();
 
-        // Stylists info
-        $std_stylist->professionalExperience = $stylist->getProfessionalExperience();
-        $std_stylist->rating = $stylist->getRating();
-        $std_stylist->serviceLocation = $stylist->getServiceLocation();
-        $std_stylist->category = $stylist->getCategory();
-        $std_stylist->priceList = $stylist->getPriceList();
-        $std_stylist->portfolio = $stylist->getPortfolio();
+        // Customer info
+        $std_customer->address = $customer->getAddress();
 
     }
 
@@ -259,6 +244,8 @@ class StylistDAO {
     }
 
 
+
 }
+
 
 ?>

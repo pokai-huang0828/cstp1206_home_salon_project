@@ -1,16 +1,16 @@
-<?php  
+<?php   
 
 require_once("../config.inc.php");
 
-require_once("../entities/Stylist.class.php");
+require_once("../entities/Customer.class.php");
 require_once("../entities/User.class.php");
 
-require_once("PDOService.class.php");
-require_once("StylistDAO.class.php");
+require_once("PDOservice.class.php");
+require_once("CustomerDAO.class.php");
 require_once("./UserDAO.class.php"); 
 
 // Initialize PDO
-StylistDAO::init();
+CustomerDAO::init();
 
 // Get Request Payload
 $requestData = json_decode(file_get_contents("php://input"));
@@ -18,7 +18,6 @@ $requestData = json_decode(file_get_contents("php://input"));
 // var_dump($requestData);
 
 // REST API HTTP Verbs
-
 switch($_SERVER["REQUEST_METHOD"]){
 
     case "GET":
@@ -26,25 +25,27 @@ switch($_SERVER["REQUEST_METHOD"]){
         // Get queries string
         $queries = array();
         parse_str($_SERVER['QUERY_STRING'], $queries);
-
+        
         // If the payload contains a userID
         if(isset($queries["userID"])){
 
-            // Return the stylist
-            $stylist = StylistDAO::getStylistById($queries["userID"]);
-            echo json_encode($stylist);
+            // Return the customer
+            $customer = CustomerDAO::getCustomerById($queries["userID"]);
+            echo json_encode($customer);
+
         } else {
 
             // Return all stylists as an array 
-            $stylists = StylistDAO::getStylists();
-            echo json_encode($stylists);
+            $customers = CustomerDAO::getCustomers();
+            echo json_encode($customers);
+
         }
 
     break;
 
     case "PUT":
-        // the payload should come in with the stylist properties + stylist ID
-        $updatedProfile = StylistDAO::updateStylists($requestData);
+        // the payload should come in with the customer properties + customer ID
+        $updatedProfile = CustomerDAO::updateCustomer($requestData);
         echo json_encode($updatedProfile);
     break;
 
