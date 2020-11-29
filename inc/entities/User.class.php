@@ -2,40 +2,40 @@
 
 class User{
 
-    private string $userID;
-    private string $password;
-    private string $role;
-    private string $firstName;
-    private string $lastName;
-    private string $profilePic;
-    private string $signUpDate;
-    private string $gender;
-    private string $phoneNumber;
-    private string $email;
+    protected string $userID;
+    protected string $password;
+    protected string $role;
+    protected string $firstName;
+    protected string $lastName;
+    protected string $profilePic;
+    protected string $signUpDate;
+    protected string $gender;
+    protected string $phoneNumber;
+    protected string $email;
 
-    function __construct(
-        string $aUserID ="",
-        string $aPassword = "",
-        string $aRole = "",
-        string $aFirstName = "",
-        string $aLastName = "",
-        string $aProfilePic = "",
-        string $aSignUpDate = "",
-        string $aGender = "",
-        string $aPhoneNumber = "",
-        string $aEmail = ""
-    ){
-        $this->userID = $aUserID;
-        $this->password = $aPassword;
-        $this->role = $aRole;
-        $this->firstName = $aFirstName;
-        $this->lastName = $aLastName;
-        $this->profilePic = $aProfilePic;
-        $this->signUpDate = $aSignUpDate;
-        $this->gender = $aGender;
-        $this->phoneNumber = $aPhoneNumber;
-        $this->email = $aEmail;
-    }
+    // function __construct(
+    //     string $aUserID ="",
+    //     string $aPassword = "",
+    //     string $aRole = "",
+    //     string $aFirstName = "",
+    //     string $aLastName = "",
+    //     string $aProfilePic = "",
+    //     string $aSignUpDate = "",
+    //     string $aGender = "",
+    //     string $aPhoneNumber = "",
+    //     string $aEmail = ""
+    // ){
+    //     $this->userID = $aUserID;
+    //     $this->password = $aPassword;
+    //     $this->role = $aRole;
+    //     $this->firstName = $aFirstName;
+    //     $this->lastName = $aLastName;
+    //     $this->profilePic = $aProfilePic;
+    //     $this->signUpDate = $aSignUpDate;
+    //     $this->gender = $aGender;
+    //     $this->phoneNumber = $aPhoneNumber;
+    //     $this->email = $aEmail;
+    // }
 
     // Getters
     public function getUserID(){

@@ -22,6 +22,7 @@ async function displayViewByRole(){
 
     // check if user is signIn
     userID = sessionStorage.getItem("userID");
+    role = sessionStorage.getItem("role");
 
     if(!userID) {
         
@@ -36,9 +37,16 @@ async function displayViewByRole(){
         
         // Display visitorOnly elements :  : this means User is a User
         visitorOnlyElements = document.getElementsByClassName("visitorOnly");
-
+        
         for(visitorOnlyElement of visitorOnlyElements){
             visitorOnlyElement.style.display = "none";
+        }
+        
+        // Set Customer or Stylist Edit Url
+        editLinkElements = document.getElementsByClassName("editLink");
+
+        for(editLinkElement of editLinkElements){
+            editLinkElement.href = `${role}Edit.html`;
         }
 
         // Display welcome + user's firstName

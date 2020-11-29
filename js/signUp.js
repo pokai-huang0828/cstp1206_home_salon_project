@@ -3,10 +3,9 @@ document.addEventListener('DOMContentLoaded', async function() {
     // if the user is login, return the user to index.html
     returnToHomeIfAuthenticated();
     
-
 });
 
-async function signUp(){
+async function signUp(){ 
 
     document.getElementById("error_msg").innerText = "";
 
@@ -17,6 +16,7 @@ async function signUp(){
     email = document.getElementById("email").value;
     gender = document.getElementById("male").checked ? "male" : "female";
     role = document.getElementById("customer").checked ? "customer" : "stylist";
+    policy = document.getElementById("policy").checked ? "selected" : "";
     
     inputs = {
         firstName,
@@ -29,16 +29,21 @@ async function signUp(){
     };
 
     // Ensure no empty fields 
-    error_msg = "The following are not provided: ";
+    error_msg = "The following are missing: ";
     error_flag = false;
 
     for (const property in inputs) {
 
         if (inputs[property] == ""){
-            error_msg += `${property}, `;
+            error_msg += `${property}? `;
             error_flag = true;
         }
 
+    }
+
+    if(policy != "selected"){
+        error_msg += "You must check to agree our site policy.";
+        error_flag = true;
     }
 
     if(error_flag){

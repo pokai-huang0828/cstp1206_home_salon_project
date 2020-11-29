@@ -1,28 +1,32 @@
-# CSTP1206 Home Salon Webapp Project 
+# CSTP1206 Home Salon Webapp Project
 
 ## Description
 
-HOME SALON is a service-booking webapp intended to bring personalized styling services to customers. This project is to be completed in 4 iterations. 
+HOME SALON is a service-booking webapp intended to bring personalized styling services to customers. This project is to be completed in 4 iterations.
 
 The following is a list of features to be implemented at project completion:
 
-- [x] Customers can browse business profiles
-- [ ] Customers can book for styling services
-- [x] Customers can search for stylists by category
-- [ ] Customers can review business service
-- [x] Stylists can edit their business profiles
-- [ ] Stylists can manage service bookings
-- [ ] Both Customers and Stylists can file reports to Web-Admin
+- [x] Customers can sign up profile accounts
+- [x] Customers can sign in profile accounts
+- [x] Customers can edit profile accounts
+- [x] Customers can browse stylist business profiles
+- [ ] Customers can create styling service bookings
+- [ ] Customers can cancel styling service bookings
+- [x] Customers can search for stylist business profiles by category
+- [ ] Customers can give rating to stylist business profiles
+- [x] Stylists can sign up business accounts
+- [x] Stylists can sign in business accounts
+- [x] Stylists can edit business accounts
+- [ ] Stylists can accept styling service bookings
+- [ ] Stylists can decline styling service bookings
 
 ## Installation
 
-1. Git clone the Home Salon Webapp Project:
+1. Backup and clear out the existing files in `C:\xampp\htdocs` and clone our project code there.
 
     `git clone https://github.com/pokai-huang0828/cstp1206_home_salon_project.git`
 
-2. Backup and clear out the current files in `C:\xampp\htdocs` and add the project code to the folder.
-
-3. To configure Apache server, open Xampp and click "Config" button in front of Apache. Then select "Apache (httpd.conf)". Add the following lines to the file and save the file. 
+2. Configure your Apache server. Open Xampp and click the "Config" button in front of Apache. Then select "Apache (httpd.conf)". Add the following lines to the file and save the file.
 
     `#Allow Apache to accept requests from all other domains.`
 
@@ -30,17 +34,15 @@ The following is a list of features to be implemented at project completion:
 
     `Header set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT"`
 
-4. (Re)start the Apache Server
+3. (Re)start the Apache Server.
 
-5. Cloned the home-salon project and place the content of the project into `C:\xampp\htdocs`.
+4. To create the database for our project, open up the system terminal, enter "type sql\homesalon.sql | mysql -u root -p". Then enter your MySQL password. Check for the existence of the project database either via MySQL Workbench or phpmyadmin.
 
-6. Download a Live Server Extension in VScode.
-
-7. Serve index.html in the root directory with the live server. 
+5. Open our webapp by entering `localhost` in your browser.
 
 ## Current Project Status
 
-Iteration 2
+Iteration 3
 
 ## Authors
 

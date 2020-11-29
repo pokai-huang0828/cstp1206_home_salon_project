@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', async function() {
 
     fileName = 'http://localhost/inc/utilities/StylistController.php';
+    
     data = await getData(fileName);
-
     data = filterList(data);
 
     displayList(data);    
@@ -18,9 +18,7 @@ function filterList(data){
 
     // pair => key and value of the query terms, ie: ["category", "hair"]
     for(var pair of urlParams.entries()) {
-
         data = data.filter(profile => profile[pair[0]] == pair[1]);
-
     }
 
     return data;   
@@ -33,7 +31,7 @@ function searchList(){
     query = "?";
 
     for ( item in selection){
-        if(item == "category" || item == "service" || item == "gender"){
+        if(item == "category" || item == "serviceLocation" || item == "gender"){
             selection[item] != "" ? query += `${item}=${selection[item]}&` : query += "";
         }
     }
