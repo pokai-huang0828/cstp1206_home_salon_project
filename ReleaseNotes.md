@@ -1,5 +1,5 @@
-## 0.2 - Iteration
+## 0.3 - Iteration
 
-- Stylist SignUp - Harleen Jhamat
-- Stylist Login - Pokai Huang 
-- Stylist Business Profile Edit - Eric Cheung 
+- Customer-Registration PoKai
+- Customer-Login Harleen
+- Customer-Profile-Edit Eric
