@@ -49,7 +49,6 @@ nav {
     height: 50%;
 }
 
-
 #policy h3 {
     margin-bottom: 10% !important;
 }
@@ -63,7 +62,8 @@ nav {
     /* padding-left: 1%; */
 }
 
-.slider, .slides{
+.slider, 
+.slides{
     height: 100% !important;
 }
 
@@ -116,6 +116,52 @@ footer{
 #loginFormDiv .cross:hover{
     color: rgb(159, 160, 161);
     cursor: pointer;
+}
+
+/* Booking List */
+
+#BookingDiv {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    margin: 0 auto;
+    z-index: 3;
+    top: 15%;
+    left: 10%;
+    padding: 3%;
+    border-radius: 1%;
+    display: none;
+    background-color: rgba(234, 236, 236, 0.904);
+    overflow: auto;
+}
+
+#bookingDiv .collection.with-header .collection-header,
+#bookingDiv .collection-item
+{
+    background-color: rgba(234, 236, 236, 0.329);
+}
+
+.bookingToggle {
+margin: 1% 0 3% 0;
+}
+
+#bookingDiv h2 {
+margin: 1% 0 3% 0;
+}
+
+#bookingDiv .cross {
+font-size: 2em;
+line-height: 1%;
+padding-right: 5%;
+}
+
+#bookingDiv .cross:hover {
+color: rgb(159, 160, 161);
+cursor: pointer;
+}
+
+#bookingDiv .declineBookingBtn {
+margin-right:10px;
 }
 
 /* backgound */
