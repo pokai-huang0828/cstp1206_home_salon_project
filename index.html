@@ -44,6 +44,7 @@
 
             <!-- Display only when user is signed in -->
             <li class="userOnly"><span class="badge white-text welcomeTag" style="margin-top:20px;"}></span></li>
+            <li class="userOnly"><a class="bookingLink bookingToggle"><i class="material-icons" style="bottom:100px;">event</i></a></li>
             <li class="userOnly"><a class="editLink" href="stylistEdit.html"><i class="material-icons" style="bottom:100px;">edit</i></a></li>
             <li class="userOnly"><a href="#" class="btn red white-text" onclick="signOut()">Logout</a></li>
 
@@ -54,7 +55,7 @@
 
     <!-- Login Form -->
     <div class="visitorOnly" id="loginFormDiv">
-      <p class="cross right loginToggle">X</p>
+      <p class="cross right loginToggle"><i class="material-icons">close</i></p>
       <h2>Login</h2>
       <div class="loginForm" id="loginForm">
         
@@ -69,6 +70,22 @@
         <button class="btn" name="loginSubmit" onclick="signIn()">Login</button>
       </div>
     </div>
+
+    <!-- My Booking List -->
+    <div class="userOnly" id="BookingDiv">
+    <p class="cross right bookingToggle"><i class="material-icons">close</i></p>
+    <h4 class="bold">My Bookings</h4>
+    <hr>
+    <!-- show error text -->
+    <div class="red-text center" id="bookingError"></div> 
+    <!-- show success text -->
+    <div class="green-text center" id="bookingSuccess"></div> 
+    <ul id="bookingContainer" class="collection with-header"></ul>
+
+        <!-- Here where the booking will display -->
+
+    </ul>
+  </div>
 
     <!-- Mobile Side bar -->
     <ul class="sidenav" id="mobile-demo">
@@ -89,7 +106,8 @@
 
         <div class="userOnly">
           <li><span class="black-text welcomeTag" style="margin-left:31px;"></span></li>
-          <li><a class="editLink" href="stylistEdit.html"><i class="material-icons">edit</i></a></li>
+          <li class="userOnly"><a class="bookingLink bookingToggle" ><i class="material-icons" style="bottom:100px;">event</i> My Booking</a></li>
+          <li><a class="editLink" href="stylistEdit.html"><i class="material-icons">edit</i>Edit Profile</a></li>
           <li><a href="#" class="btn red white-text" onclick="signOut()">Logout</a></li>
         </div>
 
@@ -166,21 +184,6 @@
               </div>
             </div>
 
-            <!-- <div class="col s12 m4">
-              <div class="card">
-                <div class="card-image">
-                  <img src="img/skin_care.jpg">
-                  <span class="card-title">Skin Care</span>
-                </div>
-                <div class="card-content">
-                  <p>Escape from everyday busy reality and treat your skin with intensive care. The combination of quality cosmetics and our professional stylists creates an irresistible combination that leaves the skin soft, supple and nourished.</p>
-                </div>
-                <div class="card-action">
-                  <a href="#"> View all Stylists</a>
-                </div>
-              </div>
-            </div> -->
-
           </div>
 
           <div class="row center">
@@ -213,7 +216,7 @@
           <div class="col s12 m4">
             <div class="card">
               <div class="card-image">
-                <img src="https://robohash.org/voluptatesquosqui.jpg?size=50x50&set=set1" height = 250, width = 200>
+                <img class="responsive-img" src="img/featuredStylist1.jpeg" height = 250, width = 200>
               </div>
               <div class="card-content">
                 <span class="card-title activator black-text"><h5>Alexandros Baitson</h5></span>
@@ -228,7 +231,7 @@
           <div class="col s12 m4">
             <div class="card">
               <div class="card-image">
-                <img src="https://robohash.org/porrodoloribusreprehenderit.jpg?size=50x50&set=set1" height = 250, width = 200>
+                <img class="responsive-img" src="img/featuredStylist2.jpeg" height = 250, width = 200>
               </div>
               <div class="card-content">
                 <span class="card-title activator black-text"><h5>Conchita Attridge</h5></span>
@@ -243,7 +246,7 @@
           <div class="col s12 m4">
             <div class="card">
               <div class="card-image">
-                <img src="https://robohash.org/voluptassedconsequatur.jpg?size=50x50&set=set1" height = 250, width = 200>
+                <img class="responsive-img" src="img/featuredStylist3.jpeg" height = 250, width = 200>
               </div>
               <div class="card-content">
                 <span class="card-title activator black-text"><h5>Florie Winham</h5></span>
@@ -278,15 +281,9 @@
             <div class="card-image waves-effect waves-block waves-light">
                 <img class="activator " src="img/imcustomer.jpeg">
                 </div>
-                <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">I'm a Customer<i class="material-icons right">more_vert</i></span>
-                <!-- <p><a href="#" class="btn disabled">Sign up</a></p> -->
+                <div class="card-content center bold">
+                <span class="card-title activator grey-text text-darken-4">I'm a Customer</span>
                 </div>
-                <!--
-                <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                </div>-->
             </div>
         </div>
 
@@ -296,16 +293,10 @@
             <div class="card-image waves-effect waves-block waves-light">
                 <img class="activator" src="img/imstylist.jpeg">
                 </div>
-                <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">I'm a Stylist<i class="material-icons right">more_vert</i></span>
-                <!-- <p><a href="signUp.php" class="btn">sign up</a></p> -->
+                <div class="card-content center bold">
+                <span class="card-title activator grey-text text-darken-4">I'm a Stylist</span>
                 </div>
-                <!--
-                <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                </div>-->
-            </div>
+              </div>
         </div>
 
             <div class="row center">
