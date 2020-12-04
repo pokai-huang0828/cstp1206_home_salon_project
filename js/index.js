@@ -122,3 +122,27 @@ function signOut() {
     sessionStorage.clear();
     location.reload();
 }
+
+async function customerCancelBooking(){
+    bookingID = this.bookingID;
+
+    url = "http://localhost/inc/utilities/BookingController.php";
+    payload = {
+        method: "DELETE",
+        body: JSON.stringify({
+            role: "customer",
+            bookingID
+        })
+    } 
+    
+    $res = await fetch(url, payload).then(res => res.json());
+
+    if($res){
+        document.getElementById("bookingError").innerText = $res.error;
+    } else {
+        document.getElementById("bookingError").innerText = "";
+        // this.disabled = true;
+        // this.innerText = "Booking Canceled";
+        done = await displayBookings(sessionStorage.getItem("userID"), "customer");
+    }
+}
