@@ -16,7 +16,12 @@ switch($_SERVER["REQUEST_METHOD"]){
 
     case "GET":
 
+        // Get queries string
+        $queries = array();
+        parse_str($_SERVER['QUERY_STRING'], $queries);
 
+        $res = BookingDAO::getBookings($queries["userID"], $queries["role"]);
+        echo json_encode($res);
 
     break;
 
@@ -37,6 +42,9 @@ switch($_SERVER["REQUEST_METHOD"]){
             echo json_encode($res);
             
         } else {
+
+            // stylist accept or decline booking request
+            $res = BookingDAO::stylistSetBookingStatus($requestData->bookingID, $requestData->status);
 
             // return null on success, else error msg
             echo json_encode($res);

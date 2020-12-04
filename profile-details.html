@@ -49,6 +49,7 @@
 
             <!-- Display only when user is signed in -->
             <li class="userOnly"><span class="badge white-text welcomeTag" style="margin-top:20px;"}></span></li>
+            <li class="userOnly"><a class="bookingLink bookingToggle"><i class="material-icons" style="bottom:100px;">event</i></a></li>
             <li class="userOnly"><a href="stylistEdit.html"><i class="material-icons" style="bottom:100px;">edit</i></a></li>
             <li class="userOnly"><a href="#" class="btn red white-text" onclick="signOut()">Logout</a></li>
 
@@ -73,6 +74,66 @@
       <button class="btn" name="loginSubmit" onclick="signIn()">Login</button>
     </div>
   </div>
+
+    <!-- My Booking List -->
+    <div class="userOnly" id="BookingDiv">
+      <p class="cross right bookingToggle"><i class="material-icons">close</i></p>
+      <h4 class="bold">My Bookings</h4>
+      <hr>
+      <!-- show error text -->
+      <div class="red-text center" id="bookingError"></div> 
+      <!-- show success text -->
+      <div class="green-text center" id="bookingSuccess"></div> 
+      <ul id="bookingContainer" class="collection with-header"></ul>
+
+          <!-- Here where the booking will display -->
+
+      </ul>
+    </div>
+
+  <!-- BookingForm -->
+  <div class="userOnly" id="BookingFormDiv">
+
+    <p class="cross right bookingFormToggle"><i class="material-icons">close</i></p>
+    <h4>Make a Booking</h4>
+    <hr>
+        
+    <!-- show error text -->
+    <div class="red-text center" id="bookingFormError"></div> 
+    <!-- show success text -->
+    <div class="green-text center" id="bookingFormSuccess"></div> 
+
+    <!-- Display Form here -->
+        <div class="input-field col s6">
+          <div class="row">
+          <i class="material-icons prefix">date_range</i>
+          <label for="bookingDate">Date of Booking</label>
+          <input id="bookingDate" type="text" class="datepicker validate">
+          </div>
+        </div>
+
+        <div class="input-field col s6">
+          <div class="row">
+            <i class="material-icons prefix">access_time</i>
+            <label for="bookingTime">Time of Booking</label>
+            <input id="bookingTime" type="tel" class="timepicker">
+          </div>
+        </div>
+
+        <div class="input-field col s6">
+          <div class="row">
+              <i class="material-icons prefix">comment</i>
+              <label for="bookingComment">Booking Comment</label>
+              <textarea id="bookingComment" class="materialize-textarea"></textarea>
+            </div>
+        </div>
+
+        <div class="input-field col s6 center">
+          <button id="bookMeButton" class="green btn" onclick="customerCreateBooking()">Book me</button>
+        </div>
+
+  </div>
+
   
   <!-- Mobile Side bar -->
   <ul class="sidenav" id="mobile-demo">
@@ -88,7 +149,8 @@
 
       <div class="userOnly">
         <li><span class="black-text welcomeTag" style="margin-left:31px;"></span></li>
-        <li><a href="stylistEdit.html"><i class="material-icons">edit</i></a></li>
+        <li class="userOnly"><a class="bookingLink bookingToggle"><i class="material-icons" style="bottom:100px;">event</i> My Booking</a></li>
+        <li><a class="editLink" href="stylistEdit.html"><i class="material-icons">edit</i> Edit Profile</a></li>
         <li><a href="#" class="btn red white-text" onclick="signOut()">Logout</a></li>
       </div>
 
@@ -122,18 +184,31 @@
             <div id="profile">
               <div class="row">
                 <div class="profile-panel col s12 m4 center z-depth-1">
-                  <object width=150 data="img/defaultProfilePic.png" type="image/png">
-                  <img
-                    class="responsive-img circle"
-                    id="profile_pic"
-                    alt="profile-pic"
-                    width =100
-                  />
-                  </object>
+                  <!-- <object width=150 data="img/defaultProfilePic.png" type="image/png"> -->
+                  <div id="profile_pic_div">
+                    <img class="responsive-img" id="profile_pic"/>
+                  </div>
+                  <!-- </object> -->
                   <h5 class="bold">Hi, My Name is <br><span id="name">Popo!</span></h5>
-                  <button class="btn disabled">BOOK ME!</button>
-                  <p>Member Since: <span id="signUpDate"></span></p>
-                  <p>Rating: <span id="rating"></span></p>
+                  <button id="bookingFormToggle" class="btn userOnly bookingFormToggle" onclick="displayBookingForm()">BOOK ME!</button>
+                  <p>Member Since: <span id="signUpDate"></span></p> 
+                  
+                  <p>Rating: <span id="rating"></span> 
+                    <i id="displayRatingInputIcon" class="material-icons tiny userOnly" onclick="displayRatingInput()">border_color</i>
+                  </p>
+                  
+                  <div class="container userOnly" id="ratingInputDiv">
+                    Rate Score(1-5):
+                    <input type="number" value=5 max=5 min=0 id="ratingInput">
+                    <button id="ratingSubmitButton" 
+                        class="btn-floating btn-small waves-effect waves-light green" 
+                        stylistid
+                        onclick="submitRating()">
+                    <i class="material-icons tiny">check</i>
+                    </button>
+                    <div id="ratingSubmitText"></div>
+                  </div>
+
                 </div>
 
                 <div class="col s12 m8">

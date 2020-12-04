@@ -175,6 +175,19 @@ class StylistDAO {
 
     }
 
+    public static function setStylistRating($stylistID, $rating){
+
+        $sql = "UPDATE stylists
+                SET rating = :rating
+                WHERE userID = :stylistID;";
+
+        self::$_db->query($sql);
+        self::$_db->bind(":rating", $rating);
+        self::$_db->bind(":stylistID", $stylistID);
+        self::$_db->execute();
+
+    }
+
     private static function convertStylistsToStdClass($results){
 
         if(is_array($results)){

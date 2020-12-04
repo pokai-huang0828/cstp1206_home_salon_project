@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', async function() {
+document.addEventListener('DOMContentLoaded', async function() { 
 
     // Config Datepicker
     var datepicker = document.querySelectorAll('.datepicker');
@@ -17,20 +17,20 @@ document.addEventListener('DOMContentLoaded', async function() {
     $(".bookingFormToggle").click(function(){
         $("#BookingFormDiv").slideToggle();
     });
-    
+
     // get userID from param
     let id = getParamID();
 
     // get data from database
     fileName = 'http://localhost/inc/utilities/StylistController.php';
     let data = await getData(fileName);
-
+    
     if(!data){
         displayError();
     } else {
         // find the correct data
         profile = findProfileByID(data, id);
-
+        
         // display data
         if(!profile){
             displayError();
@@ -75,10 +75,10 @@ function displayProfile(profile){
     document.getElementById("pricing").innerText = profile.priceList;
     document.getElementById("email").innerText = profile.email;
     document.getElementById("phoneNumber").innerText = profile.phoneNumber;
-
+    
     // set stylistID to ratingInput button 
     document.getElementById("ratingSubmitButton").stylistID = profile.userID;
-
+    
     // set stylistID to BOOK ME button
     document.getElementById("bookMeButton").stylistID = profile.userID;
 
@@ -87,7 +87,7 @@ function displayProfile(profile){
         document.getElementById("bookingFormToggle").style.display = "none";
         document.getElementById("displayRatingInputIcon").style.display = "none";
     };
-
+    
 };
 
 function goBack(){
