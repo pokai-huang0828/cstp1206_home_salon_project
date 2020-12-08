@@ -1,5 +1,5 @@
-## 0.3 - Iteration
+## 0.4 - Iteration
 
-- Customer-Registration PoKai
-- Customer-Login Harleen
-- Customer-Profile-Edit Eric
+- Customer-Create-And-Cancel-Booking PoKai
+- Rate-Stylist Harleen
+- Stylist-Accept-And-Decline-Booking Eric
