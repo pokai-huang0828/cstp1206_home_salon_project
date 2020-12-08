@@ -58,7 +58,7 @@ function displayList(data){
     for(var p in data){
         
         var root_div = document.createElement("div");
-        root_div.className = "col s12 m3";
+        root_div.className = "col s12 m4 l3 profile_root_div";
         
         var card_div = document.createElement("div");
         card_div.className = "card";
@@ -66,11 +66,12 @@ function displayList(data){
         var card_image_div = document.createElement("div");
         card_image_div.className = "card-image";
 
-        var img_object_div = document.createElement("object");
-        img_object_div.data = "img/defaultProfilePic.png";
+        var img_object_div = document.createElement("div");
+        img_object_div.className = "profile_pic_div"
 
         var profile_img = document.createElement("img");
         profile_img.src = data[p]["profilePic"];
+        profile_img.className = "responsive-img";
 
         var card_content_div = document.createElement("div");
         card_content_div.className = "card-content center";
@@ -87,7 +88,7 @@ function displayList(data){
         button.innerText = "More Info";
         button.onclick = goToDetailPage;
         
-        img_object_div.appendChild(profile_img)
+        img_object_div.appendChild(profile_img);
         card_image_div.appendChild(img_object_div);
 
         card_content_div.appendChild(name_p);

@@ -18,9 +18,19 @@
 {
     min-height: 105%;
     width: 100%;
-    background-image: url("/img/banner5.jpg");
+    /* background-image: url("/img/banner5.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
+}
+
+.profile-search-container .profile_pic_div
+{
+    border-radius: 2%;
+    min-height: 200px;
+    background-image: url('/img/defaultProfilePic.png');
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-size: contain; 
 }
 
 .profile-search-container .selection {

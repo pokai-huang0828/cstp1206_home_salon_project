@@ -12,26 +12,7 @@ class Stylist extends User{
     private string $priceList;
     private string $portfolio;
 
-    // function Stylist(
-    //     string $aUserID = "", 
-    //     int $aProfessionalExperience = 0,
-    //     float $aRating = 0,
-    //     string $aServiceLocation = "",
-    //     string $aCategory = "", 
-    //     string $aPriceList = "",
-    //     string $aPortfolio = ""
-    // ){
-    //     $this->userID = $aUserID;
-    //     $this->professionalExperience = $aProfessionalExperience;
-    //     $this->rating = $aRating;
-    //     $this->serviceLocation = $aServiceLocation;
-    //     $this->category = $aCategory;
-    //     $this->priceList = $aPriceList;
-    //     $this->portfolio = $aPortfolio;
-    // }
-
     // Getters
-
     public function getUserID(){
         return $this->userID;
     }

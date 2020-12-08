@@ -10,15 +10,15 @@ The following is a list of features to be implemented at project completion:
 - [x] Customers can sign in profile accounts
 - [x] Customers can edit profile accounts
 - [x] Customers can browse stylist business profiles
-- [ ] Customers can create styling service bookings
-- [ ] Customers can cancel styling service bookings
+- [x] Customers can create styling service bookings
+- [x] Customers can cancel styling service bookings
 - [x] Customers can search for stylist business profiles by category
-- [ ] Customers can give rating to stylist business profiles
+- [x] Customers can give rating to stylist business profiles
 - [x] Stylists can sign up business accounts
 - [x] Stylists can sign in business accounts
 - [x] Stylists can edit business accounts
-- [ ] Stylists can accept styling service bookings
-- [ ] Stylists can decline styling service bookings
+- [x] Stylists can accept styling service bookings
+- [x] Stylists can decline styling service bookings
 
 ## Installation
 
@@ -42,7 +42,7 @@ The following is a list of features to be implemented at project completion:
 
 ## Current Project Status
 
-Iteration 3
+Iteration 4
 
 ## Authors
 
